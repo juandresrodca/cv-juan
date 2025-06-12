@@ -1,0 +1,49 @@
+name: Deploy Astro Project to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    # Establece el directorio de trabajo para todos los pasos en este job
+    # para asegurar que npm y Astro se ejecuten desde la raíz del repositorio
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Recupera todo el historial para gh-pages
+
+      - name: Setup Node.js environment 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usa Node.js 20 o una versión LTS compatible
+
+      - name: Cache Node Modules ⚡️
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies 📦
+        run: npm ci # Usa 'npm ci' para instalaciones limpias en entornos CI/CD
+        # 'npm ci' es preferido para CI/CD; si falla, puedes probar con 'npm install'
+
+      - name: Build Astro project 🏗️
+        run: npm run build # Ejecuta el comando de compilación de Astro
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v4 # Acción recomendada para el despliegue en gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Especifica el directorio de salida de Astro
+          publish_branch: gh-pages # La rama donde se desplegará el sitio estático
+          force_orphan: true # Recomendado para un despliegue limpio (reemplaza el contenido de la rama gh-pages)
