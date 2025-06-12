@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies 📦
-        run: npm ci # Usa 'npm ci' para instalaciones limpias en entornos CI/CD
+        run: npm ci # Usa 'npm ci' para instalaciones limpias en entornos CI/CD agrego algo aca
         # 'npm ci' es preferido para CI/CD; si falla, puedes probar con 'npm install'
 
       - name: Build Astro project 🏗️
