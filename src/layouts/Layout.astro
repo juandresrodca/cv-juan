@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Juan Rodriguez - IT Support Specialist transitioning to Cybersecurity" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-inter bg-dark-900 text-white overflow-x-hidden">
+    <slot />
+
+    <script>
+      // Import statement for animations.js is here in the original,
+      // but for standalone HTML, we'll inline the script content later
+      // or ensure it's available via a global scope.
+      // For Astro, this imports the client-side script.
+      import '../scripts/animations.js';
+    </script>
+  </body>
+</html>
