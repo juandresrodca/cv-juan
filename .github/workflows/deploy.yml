@@ -15,6 +15,10 @@ jobs:
         working-directory: ${{ github.workspace }}
 
     steps:
+      - name: Validate lock file sync
+        run: | 
+          npm ci || (echo "package.json and package-lock.json are out of sync. Run 'npm install' locally to fix this." && exit 1)
+      
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
