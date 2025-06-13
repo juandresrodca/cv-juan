@@ -3,15 +3,19 @@ name: Deploy Astro Project to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+  # Permite la ejecución manual del workflow desde la pestaña Actions de GitHub
+  workflow_dispatch:
+
+# Otorga permisos al GITHUB_TOKEN para la implementación de GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -23,27 +27,36 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cache Node Modules ⚡️
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies 📦
-        run: npm ci
+      - name: Clear npm cache and install dependencies 📦 # <--- MODIFICADO AQUÍ
+        run: |
+          npm cache clean --force
+          npm install --force
+        # Usar 'npm install --force' para una instalación más agresiva en CI
+        # si 'npm ci' o 'npm install' normales fallan repetidamente.
 
       - name: Build Astro project 🏗️
         run: npm run build
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+      # **¡CRÍTICO!** Paso de depuración para verificar el contenido de 'dist'
+      - name: List dist contents 🔍
+        run: ls -R dist # Muestra el contenido de la carpeta 'dist'
+
+      - name: Upload artifact ⬆️
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist # Keep this as is for now
-          publish_branch: gh-pages
-          force_orphan: true
-          # Add this line to explicitly set the destination directory to the root of the gh-pages branch
-          # This might be redundant with publish_dir but can sometimes help if the action interprets paths differently.
-          # cname: 'juandresrodca.github.io' # ONLY add this if you are setting up a custom domain (not repo pages)
+          path: './dist' # Sube la carpeta 'dist' como artefacto
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Este job depende del job 'build'
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4 # Acción oficial de GitHub para desplegar a Pages
+        # No se requiere 'with' aquí, ya que la acción toma el artefacto subido
+        # y lo despliega automáticamente.
+        # cname: 'juandresrodca.github.io' # Descomenta y ajusta si usas un dominio personalizado
+        # token: ${{ secrets.GITHUB_TOKEN }} # No es necesario explícitamente con id-token permission
