@@ -3,13 +3,11 @@ name: Deploy Astro Project to GitHub Pages
 on:
   push:
     branches:
-      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    # Establece el directorio de trabajo para todos los pasos en este job
-    # para asegurar que npm y Astro se ejecuten desde la raíz del repositorio
     defaults:
       run:
         working-directory: ${{ github.workspace }}
@@ -18,12 +16,12 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Recupera todo el historial para gh-pages
+          fetch-depth: 0
 
       - name: Setup Node.js environment 🔧
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Usa Node.js 20 o una versión LTS compatible
+          node-version: '20'
 
       - name: Cache Node Modules ⚡️
         uses: actions/cache@v4
@@ -34,16 +32,18 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies 📦
-        run: npm ci # Usa 'npm ci' para instalaciones limpias en entornos CI/CD
-        # 'npm ci' es preferido para CI/CD; si falla, puedes probar con 'npm install'
+        run: npm ci
 
       - name: Build Astro project 🏗️
-        run: npm run build # Ejecuta el comando de compilación de Astro
+        run: npm run build
 
       - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4 # Acción recomendada para el despliegue en gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Especifica el directorio de salida de Astro
-          publish_branch: gh-pages # La rama donde se desplegará el sitio estático
-          force_orphan: true # Recomendado para un despliegue limpio (reemplaza el contenido de la rama gh-pages)
+          publish_dir: ./dist # Keep this as is for now
+          publish_branch: gh-pages
+          force_orphan: true
+          # Add this line to explicitly set the destination directory to the root of the gh-pages branch
+          # This might be redundant with publish_dir but can sometimes help if the action interprets paths differently.
+          # cname: 'juandresrodca.github.io' # ONLY add this if you are setting up a custom domain (not repo pages)
