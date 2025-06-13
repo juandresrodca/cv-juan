@@ -25,14 +25,18 @@ jobs:
       - name: Setup Node.js environment 🔧
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20' # Asegúrate de que esta versión sea compatible con tus dependencias
 
-      - name: Clear npm cache and install dependencies 📦 # <--- MODIFICADO AQUÍ
+      - name: Clean install dependencies 📦 # <--- MODIFICADO AQUÍ
         run: |
-          npm cache clean --force
-          npm install --force
-        # Usar 'npm install --force' para una instalación más agresiva en CI
-        # si 'npm ci' o 'npm install' normales fallan repetidamente.
+          rm -rf node_modules package-lock.json 
+          npm cache clean --force 
+          npm install --legacy-peer-deps 
+        # Eliminar para una limpieza total
+        # Limpiar la caché de npm
+        # Usar --legacy-peer-deps para resolver problemas de dependencias
+        
+
 
       - name: Build Astro project 🏗️
         run: npm run build
@@ -56,7 +60,4 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4 # Acción oficial de GitHub para desplegar a Pages
-        # No se requiere 'with' aquí, ya que la acción toma el artefacto subido
-        # y lo despliega automáticamente.
-        # cname: 'juandresrodca.github.io' # Descomenta y ajusta si usas un dominio personalizado
-        # token: ${{ secrets.GITHUB_TOKEN }} # No es necesario explícitamente con id-token permission
+        # No se requiere 'with' aquí, a menos que especifiques opciones como 'cname' o 'token'
