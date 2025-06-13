@@ -41,7 +41,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Keep this as is for now
+          publish_dir: dist # Keep this as is for now
           publish_branch: gh-pages
           force_orphan: true
           # Add this line to explicitly set the destination directory to the root of the gh-pages branch
