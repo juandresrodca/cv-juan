@@ -1,0 +1,65 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Astro Project to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+  # Permite la ejecución manual del workflow desde la pestaña Actions de GitHub
+  workflow_dispatch:
+
+# Otorga permisos al GITHUB_TOKEN para la implementación de GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js environment 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Asegúrate de que esta versión sea compatible con tus dependencias
+
+      - name: Clean install dependencies 📦 # <--- MODIFICADO AQUÍ
+        run: |
+          rm -rf node_modules package-lock.json 
+          npm cache clean --force 
+          npm install --legacy-peer-deps 
+        # Eliminar para una limpieza total
+        # Limpiar la caché de npm
+        # Usar --legacy-peer-deps para resolver problemas de dependencias
+        
+
+
+      - name: Build Astro project 🏗️
+        run: npm run build
+
+      # **¡CRÍTICO!** Paso de depuración para verificar el contenido de 'dist'
+      - name: List dist contents 🔍
+        run: ls -R dist # Muestra el contenido de la carpeta 'dist'
+
+      - name: Upload artifact ⬆️
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Sube la carpeta 'dist' como artefacto
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Este job depende del job 'build'
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4 # Acción oficial de GitHub para desplegar a Pages
+        # No se requiere 'with' aquí, a menos que especifiques opciones como 'cname' o 'token'
