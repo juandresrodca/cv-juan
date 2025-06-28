@@ -3,8 +3,8 @@ name: Deploy Astro Project to GitHub Pages
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+  workflow_dispatch: # Permite la ejecución manual del workflow
 
 permissions:
   contents: read
@@ -37,15 +37,16 @@ jobs:
       - name: List dist contents 🔍
         run: ls -R dist
 
-      - name: Setup Pages ⚙️
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: 'astro'
+      # REMOVED: - name: Setup Pages ⚙️ (This step was causing the TypeError)
+      # REMOVED:   uses: actions/configure-pages@v5
+      # REMOVED:   with:
+      # REMOVED:     static_site_generator: 'astro'
+      # REMOVED:     enable_jekyll: false
 
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist' # Ensure this path is correct relative to the working directory
 
   deploy:
     environment:
@@ -57,6 +58,7 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4
-        # Uncomment and adjust the following line if using a custom domain
-        # with:
-        #   cname: 'juandresrodca.github.io'
+        
+          # This action automatically deploys the artifact uploaded by 'actions/upload-pages-artifact'
+          # No need to specify publish_dir or artifact_name here, it picks it up automatically.
+          # cname: 'juandresrodca.github.io' # Uncomment and adjust if using a custom domain
