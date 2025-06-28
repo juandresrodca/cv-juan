@@ -3,11 +3,9 @@ name: Deploy Astro Project to GitHub Pages
 on:
   push:
     branches:
-      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
-  # Permite la ejecución manual del workflow desde la pestaña Actions de GitHub
+      - main
   workflow_dispatch:
 
-# Otorga permisos al GITHUB_TOKEN para la implementación de GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -25,39 +23,40 @@ jobs:
       - name: Setup Node.js environment 🔧
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Asegúrate de que esta versión sea compatible con tus dependencias
+          node-version: '20'
 
-      - name: Clean install dependencies 📦 # <--- MODIFICADO AQUÍ
+      - name: Clean install dependencies 📦
         run: |
-          rm -rf node_modules package-lock.json 
-          npm cache clean --force 
-          npm install --legacy-peer-deps 
-        # Eliminar para una limpieza total
-        # Limpiar la caché de npm
-        # Usar --legacy-peer-deps para resolver problemas de dependencias
-        
-
+          rm -rf node_modules package-lock.json
+          npm cache clean --force
+          npm install --legacy-peer-deps
 
       - name: Build Astro project 🏗️
         run: npm run build
 
-      # **¡CRÍTICO!** Paso de depuración para verificar el contenido de 'dist'
       - name: List dist contents 🔍
-        run: ls -R dist # Muestra el contenido de la carpeta 'dist'
+        run: ls -R dist
+
+      - name: Setup Pages ⚙️
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: 'astro'
 
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Sube la carpeta 'dist' como artefacto
+          path: './dist'
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build # Este job depende del job 'build'
+    needs: build
     steps:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
-        uses: actions/deploy-pages@v4 # Acción oficial de GitHub para desplegar a Pages
-        # No se requiere 'with' aquí, a menos que especifiques opciones como 'cname' o 'token'
+        uses: actions/deploy-pages@v4
+        # Uncomment and adjust the following line if using a custom domain
+        # with:
+        #   cname: 'juandresrodca.github.io'
