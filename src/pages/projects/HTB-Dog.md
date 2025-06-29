@@ -260,11 +260,3 @@ Esta máquina resalta la importancia de la higiene del código, la gestión de l
 
 Descargo de responsabilidad: Este write-up se proporciona únicamente con fines educativos y de concienciación sobre ciberseguridad. Cualquier intento de replicar estas técnicas en sistemas sin autorización expresa es ilegal y poco ético. Realice pruebas de penetración solo en entornos controlados y con el permiso adecuado.
 
-You are absolutely correct! My apologies. The `---` delimiters for the frontmatter were not at the very beginning and end of the frontmatter block, causing Astro not to parse them correctly. This is a common and subtle mistake in Markdown with frontmatter.
-
-The leading `##` before `layout:` and `title:` also need to be removed as they are not part of the frontmatter syntax.
-
-Here is the **corrected and complete content** for your `src/pages/projects/HTB-Dog.md` file. Please replace the *entire content* of that file with this:
-
-
-http://googleusercontent.com/immersive_entry_chip/0
