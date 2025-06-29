@@ -1,22 +1,23 @@
 ---
-// src/components/Projects.astro (modificado para listar write-ups)
-// Importa todos los archivos Markdown en la carpeta src/pages/projects/
+// src/components/Projects.astro (modified to list write-ups)
+// Imports all Markdown files in the src/pages/projects/ folder
 const allWriteups = await Astro.glob('../pages/projects/*.md');
 
-// Filtra para incluir solo los write-ups de Hack The Box
+// Filters to include only Hack The Box write-ups
+// We assume write-ups have a 'tags' property in their frontmatter that includes "HackTheBox".
 const htbWriteups = allWriteups.filter(
     (writeup) => writeup.frontmatter.tags && writeup.frontmatter.tags.includes("HackTheBox")
 );
 
-// Ordenar los write-ups por fecha de publicación, más recientes primero
+// Sorts write-ups by publish date, most recent first
 const sortedWriteups = htbWriteups.sort((a, b) => {
     const dateA = new Date(a.frontmatter.publishDate);
     const dateB = new Date(b.frontmatter.publishDate);
     return dateB.getTime() - dateA.getTime();
 });
 
-// Define tus proyectos estáticos que no son Markdown, si los hay.
-// Asegúrate de que las rutas 'link' y 'github' sean las correctas para tu sitio de GitHub Pages.
+// Defines your static (non-Markdown) projects, if any.
+// Ensure that 'link' and 'github' paths are correct for your GitHub Pages site.
 const staticProjects = [
     {
         title: "C# MVC Web Application",
@@ -40,13 +41,13 @@ const staticProjects = [
 ---
 <section id="projects" class="py-20 bg-dark-800">
     <div class="container mx-auto px-6">
-        <h2 class="section-title">Mis Proyectos y Write-ups</h2>
+        <h2 class="section-title">My Projects and Write-ups</h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <!-- Mapea los write-ups de Hack The Box (dinámicos desde archivos Markdown) -->
+            <!-- Map Hack The Box write-ups (dynamic from Markdown files) -->
             {sortedWriteups.map((writeup) => (
                 <div class="card group hover:scale-105 transition-transform duration-300">
-                    {/* El emoji y el gradiente se pueden definir en el frontmatter del Markdown */}
+                    {/* The emoji and gradient can be defined in the Markdown frontmatter */}
                     <div class={`h-48 bg-gradient-to-br ${writeup.frontmatter.gradient || 'from-green-500 to-blue-600'} rounded-lg mb-6 flex items-center justify-center text-6xl`}>
                         {writeup.frontmatter.emoji || '🎯'} {/* Fallback emoji if not specified in MD */}
                     </div>
@@ -58,7 +59,7 @@ const staticProjects = [
                         ))}
                     </div>
                     <div class="flex space-x-4">
-                        <a href={writeup.url} class="btn-primary text-sm">Leer Write-up</a>
+                        <a href={writeup.url} class="btn-primary text-sm">Read Write-up</a>
                         {writeup.frontmatter.github && (
                             <a href={writeup.frontmatter.github} target="_blank" class="btn-secondary text-sm">GitHub</a>
                         )}
@@ -66,7 +67,7 @@ const staticProjects = [
                 </div>
             ))}
 
-            <!-- Mapea los proyectos estáticos (definidos directamente en este archivo Astro) -->
+            <!-- Map static projects (defined directly in this Astro file) -->
             {staticProjects.map((project) => (
                 <div class="card group hover:scale-105 transition-transform duration-300">
                     <div class={`h-48 bg-gradient-to-br ${project.gradient} rounded-lg mb-6 flex items-center justify-center text-6xl`}>
@@ -80,7 +81,7 @@ const staticProjects = [
                         ))}
                     </div>
                     <div class="flex space-x-4">
-                        <a href={project.link} class="btn-primary text-sm">Ver Detalles</a>
+                        <a href={project.link} class="btn-primary text-sm">View Details</a>
                         {project.github && (
                             <a href={project.github} target="_blank" class="btn-secondary text-sm">GitHub</a>
                         )}
