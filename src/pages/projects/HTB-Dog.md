@@ -37,6 +37,8 @@ gradient: "from-purple-500 to-indigo-600"
 
     This machine, "Dog," is an easy CTF involving the enumeration of an exposed Git repository on a web service, the exploitation of an arbitrary file upload vulnerability in Backdrop CMS, and privilege escalation through a misconfigured `sudo` entry for the `bee` tool.
 
+    ---
+
     ## 1. Port Scanning (Nmap)
 
     The first step is always an Nmap scan to discover open ports and running services.
@@ -291,8 +293,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     User johncusack may run the following commands on dog:
         (ALL : ALL) /usr/local/bin/bee
-    ```
-    `johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
+    ```johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
 
     The `bee` tool is an executable for Backdrop CMS that allows evaluating PHP code. We can use its `php-eval` subcommand to execute arbitrary PHP code as `root`.
 
