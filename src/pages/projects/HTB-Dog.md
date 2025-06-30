@@ -65,7 +65,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     We accessed the website at `http://10.10.11.58/`. The home page shows a "Dog" site with the title "Welcome to Dog!" and mentions "Dog obesity" with the indication "Mon, 15/07/2024 - 7:51pm by dogfBackDropSystem". This suggests the site might be running on **Backdrop CMS**.
 
-    ![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")
+![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")
     *Caption: The main page of the Dog website, indicating Backdrop CMS.*
 
     ### Discovery of an Exposed Git Repository
