@@ -16,7 +16,7 @@ gradient: "from-purple-500 to-indigo-600"
 <nav class="sticky top-0 z-40 bg-dark-900/80 backdrop-blur-md py-4 border-b border-gray-800">
   <div class="container mx-auto px-6 flex justify-between items-center">
     <a href="/cv-juan/#projects" class="text-primary-400 hover:text-primary-300 transition-colors flex items-center space-x-2">
-      <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 001.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
       </svg>
       <span>Back to Projects</span>
@@ -56,7 +56,6 @@ gradient: "from-purple-500 to-indigo-600"
     ```
     The scan reveals that ports 22 (SSH) and 80 (HTTP) are open. Port 80 is our primary target for web enumeration.
 
-    <!-- Ensure this image line is NOT wrapped in any backticks (`) or triple backticks (```) -->
     ![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results")
     *Caption: Initial Nmap scan revealing open SSH and HTTP ports.*
 
@@ -294,9 +293,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     User johncusack may run the following commands on dog:
         (ALL : ALL) /usr/local/bin/bee
-    ```
-
-    `johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
+    ```johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
 
     The `bee` tool is an executable for Backdrop CMS that allows evaluating PHP code. We can use its `php-eval` subcommand to execute arbitrary PHP code as `root`.
 
