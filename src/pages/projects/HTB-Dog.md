@@ -56,8 +56,8 @@ gradient: "from-purple-500 to-indigo-600"
     ```
 
     The scan reveals that ports 22 (SSH) and 80 (HTTP) are open. Port 80 is our primary target for web enumeration.
-<!-- image 1 
-    ![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results") -->
+<!-- image 1 -->
+    ![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results")
     *Caption: Initial Nmap scan revealing open SSH and HTTP ports.*
 
     ---
