@@ -92,7 +92,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     Once the repository was downloaded, we explored the files. We found the database configuration file: `settings.php`.
 
-    ```php
+```php
     // File: settings.php
     <?php
 
@@ -107,7 +107,7 @@ gradient: "from-purple-500 to-indigo-600"
     $database = 'mysql://root:BackDropJ2024052824@127.0.0.1/hackdrop';
     $database_prefix = '';
     ?>
-    ```
+```
 
     Excellent! We found the database credentials:
 
