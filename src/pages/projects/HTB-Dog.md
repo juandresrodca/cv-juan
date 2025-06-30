@@ -25,7 +25,7 @@ gradient: "from-purple-500 to-indigo-600"
   </div>
 </nav>
 
-<!--<article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12">-->
+<article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12">
     # Dog - Hack The Box Write-up
 
     ## Introduction to the Dog Machine
@@ -293,7 +293,8 @@ gradient: "from-purple-500 to-indigo-600"
 
     User johncusack may run the following commands on dog:
         (ALL : ALL) /usr/local/bin/bee
-    ```johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
+    ```
+    `johncusack` can execute `/usr/local/bin/bee` as any user (ALL) and as root (ALL), without requiring an additional password if already authenticated as `johncusack`.
 
     The `bee` tool is an executable for Backdrop CMS that allows evaluating PHP code. We can use its `php-eval` subcommand to execute arbitrary PHP code as `root`.
 
@@ -346,3 +347,4 @@ gradient: "from-purple-500 to-indigo-600"
     ---
     **Disclaimer:** This write-up is provided for educational and cybersecurity awareness purposes only. Any attempts to replicate these techniques on unauthorized systems are illegal and unethical. Perform penetration testing only in controlled environments and with proper permission.
     ---
+</article>
