@@ -25,7 +25,7 @@ gradient: "from-purple-500 to-indigo-600"
   </div>
 </nav>
 
-<article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12">
+<!--<article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12">-->
     # Dog - Hack The Box Write-up
 
     ## Introduction to the Dog Machine
