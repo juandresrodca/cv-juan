@@ -12,7 +12,7 @@ emoji: "🐕"
 gradient: "from-purple-500 to-indigo-600"
 ---
 
-<!-- Navigation Bar for Write-up -->
+<!-- Navigation Bar for Write-up 
 <nav class="sticky top-0 z-40 bg-dark-900/80 backdrop-blur-md py-4 border-b border-gray-800">
   <div class="container mx-auto px-6 flex justify-between items-center">
     <a href="/cv-juan/#projects" class="text-primary-400 hover:text-primary-300 transition-colors flex items-center space-x-2">
@@ -23,9 +23,9 @@ gradient: "from-purple-500 to-indigo-600"
     </a>
     <h1 class="text-xl font-bold text-gradient hidden md:block">Dog - Hack The Box Write-up</h1>
   </div>
-</nav>
+</nav>-->
 
-<article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12">
+<!--article class="prose prose-invert max-w-none mx-auto p-6 md:p-10 lg:p-12"-->
     # Dog - Hack The Box Write-up
 
     ## Introduction to the Dog Machine
@@ -347,4 +347,4 @@ gradient: "from-purple-500 to-indigo-600"
     ---
     **Disclaimer:** This write-up is provided for educational and cybersecurity awareness purposes only. Any attempts to replicate these techniques on unauthorized systems are illegal and unethical. Perform penetration testing only in controlled environments and with proper permission.
     ---
-</article>
+<!--/article>-->
