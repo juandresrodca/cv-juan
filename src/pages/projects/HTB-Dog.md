@@ -16,7 +16,7 @@ gradient: "from-purple-500 to-indigo-600"
 <nav class="sticky top-0 z-40 bg-dark-900/80 backdrop-blur-md py-4 border-b border-gray-800">
   <div class="container mx-auto px-6 flex justify-between items-center">
     <a href="/cv-juan/#projects" class="text-primary-400 hover:text-primary-300 transition-colors flex items-center space-x-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 001.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
       </svg>
       <span>Back to Projects</span>
@@ -56,7 +56,8 @@ gradient: "from-purple-500 to-indigo-600"
     ```
 
     The scan reveals that ports 22 (SSH) and 80 (HTTP) are open. Port 80 is our primary target for web enumeration.
-<!-- image 1 -->
+
+    <!-- Ensure this image line is NOT wrapped in any backticks (`) or triple backticks (```) -->
     ![Nmap scan results showing open ports 22 and 80](/cv-juan/images/dog-htb/nmap-results.png "Nmap Scan Results")
     *Caption: Initial Nmap scan revealing open SSH and HTTP ports.*
 
@@ -65,8 +66,8 @@ gradient: "from-purple-500 to-indigo-600"
     ## 2. Web Enumeration (HTTP - Apache)
 
     We accessed the website at `http://10.10.11.58/`. The home page shows a "Dog" site with the title "Welcome to Dog!" and mentions "Dog obesity" with the indication "Mon, 15/07/2024 - 7:51pm by dogfBackDropSystem". This suggests the site might be running on **Backdrop CMS**.
-<!-- image 2
-    ![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")-->
+
+    ![Screenshot of the Dog website homepage](/cv-juan/images/dog-htb/website-homepage.png "Dog Website Homepage")
     *Caption: The main page of the Dog website, indicating Backdrop CMS.*
 
     ### Discovery of an Exposed Git Repository
@@ -85,8 +86,8 @@ gradient: "from-purple-500 to-indigo-600"
     git-dumper [http://10.10.11.58/.git/](http://10.10.11.58/.git/) dog_html/
     ```
     *(Note: The PDF shows `http://10.10.11.58/.git/dog_htb/` as an example, but the correct URL to download the repository root would be `http://10.10.11.58/.git/`)*
-<!-- image 3
-    ![Terminal screenshot showing git-dumper command and output](/cv-juan/images/dog-htb/git-dumper.png "Downloading Git Repository") -->
+
+    ![Terminal screenshot showing git-dumper command and output](/cv-juan/images/dog-htb/git-dumper.png "Downloading Git Repository")
     *Caption: Using `git-dumper` to pull the exposed Git repository contents.*
 
     ### Analyzing the Source Code - Database Credentials
