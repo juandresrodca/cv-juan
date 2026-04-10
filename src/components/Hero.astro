@@ -1,10 +1,10 @@
- <section id="home" class="min-h-screen flex items-center justify-center relative">
+ <section id="home" class="min-h-screen flex items-center justify-center relative bg-transparent">
         <div class="container mx-auto px-6 text-center z-10">
             <div class="max-w-4xl mx-auto">
-                <!-- Animated greeting -->
+                <!-- Typewriter effect greeting -->
                 <div class="animate-fade-in">
-                    <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient">
-                        Hi, I'm Juan
+                    <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient typewriter-header">
+                        <span id="typed-text"></span><span class="cursor">|</span>
                     </h1>
                 </div>
 
@@ -38,3 +38,63 @@
             </div>
         </div>
     </section>
+
+<style>
+    .cursor {
+        animation: blink 0.7s infinite;
+        color: #00ff41;
+        font-weight: bold;
+    }
+
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+</style>
+
+<script>
+    const phrases = [
+        "Hi, I'm Juan",
+        "IT Systems Administrator",
+        "Cybersecurity Enthusiast",
+        "Penetration Tester"
+    ];
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const el = document.getElementById('typed-text');
+
+    function type() {
+        const current = phrases[phraseIdx];
+
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIdx--);
+        } else {
+            el.textContent = current.substring(0, charIdx++);
+        }
+
+        // Completed typing a phrase
+        if (!isDeleting && charIdx > current.length) {
+            setTimeout(() => {
+                isDeleting = true;
+                type();
+            }, 1500);
+            return;
+        }
+
+        // Completed deleting a phrase
+        if (isDeleting && charIdx < 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+        }
+
+        const speed = isDeleting ? 30 : 80;
+        setTimeout(type, speed);
+    }
+
+    // Start typing animation when component loads
+    if (el) {
+        type();
+    }
+</script>

@@ -106,3 +106,67 @@ if (canvas) {
     }
   });
 }
+
+// ====== SCROLL REVEAL ANIMATIONS ======
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      scrollObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+// Observe all elements with scroll-reveal class
+document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+
+// ====== GLOWING CARD HOVER EFFECT ======
+document.querySelectorAll('.glow-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// ====== ANIMATED TIMELINE ======
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+// Observe all timeline items
+document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+
+// ====== MAGNETIC/TILT CARD EFFECT ======
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateY(0) rotateX(0) scale(1)';
+    card.style.transition = 'transform 0.5s ease';
+  });
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s ease';
+  });
+});
+
+// ====== SCROLL PROGRESS INDICATOR ======
+window.addEventListener('scroll', () => {
+  const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const scrollBar = document.querySelector('.scroll-progress');
+  if (scrollBar) {
+    scrollBar.style.transform = `scaleX(${progress})`;
+  }
+});
+
