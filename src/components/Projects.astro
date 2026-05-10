@@ -38,6 +38,15 @@ const staticProjects = [
         gradient: "from-blue-500 to-cyan-600"
     },
     {
+        title: "Phishing Detection Simulator",
+        description: "A Python CLI tool simulating SOC analyst workflows — scans emails for phishing indicators, scores risk from 0–100 (LOW/MEDIUM/HIGH), and exports JSON/CSV reports.",
+        tags: ["Python", "Cybersecurity", "SOC", "CLI Tool"],
+        link: "/cv-juan/projects/phishing-detection-sim",
+        github: "https://github.com/juandresrodca/Phishing-Detection-Sim",
+        emoji: "🎣",
+        gradient: "from-orange-500 to-red-600"
+    },
+    {
         title: "Home Security Lab",
         description: "Personal cybersecurity lab environment using VirtualBox, Kali Linux, and vulnerable VMs for practicing penetration testing and digital forensics.",
         tags: ["Kali Linux", "VirtualBox", "Metasploit"],
@@ -63,7 +72,7 @@ const staticProjects = [
                     <h3 class="text-2xl font-bold mb-4 text-primary-400">{writeup.frontmatter.title}</h3>
                     <p class="text-gray-300 mb-6">{writeup.frontmatter.description}</p>
                     <div class="flex flex-wrap gap-2 mb-6">
-                        {writeup.frontmatter.tags.map(tag => (
+                        {writeup.frontmatter.tags.map((tag: string) => (
                             <span class="bg-primary-600/20 text-primary-400 px-2 py-1 rounded text-sm">{tag}</span>
                         ))}
                     </div>
