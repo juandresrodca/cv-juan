@@ -56,6 +56,90 @@ To run this project locally, follow these steps:
 
 This project is automatically deployed to GitHub Pages using a GitHub Actions workflow. Any push to the `main` branch will trigger a new build and deployment.
 
+## Weekly Post Automation
+
+`weekly_post.py` fetches the latest cybersecurity news from three RSS feeds
+(The Hacker News, Krebs on Security, CISA Alerts), calls the Claude API to
+draft a blog post in your voice, writes the Markdown file to
+`src/content/blog/`, and pushes to git automatically.
+
+### Setup
+
+```bash
+# 1. Install Python dependencies
+pip install -r requirements.txt
+
+# 2. Create your .env file
+cp .env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY
+
+# 3. Test with a dry run (no files written, no git ops)
+python weekly_post.py --dry-run
+
+# 4. Run for real
+python weekly_post.py
+```
+
+### Scheduling — Linux / macOS (cron)
+
+Open your crontab:
+
+```bash
+crontab -e
+```
+
+Add a line to run every Friday at 08:00 local time (adjust path as needed):
+
+```cron
+0 8 * * 5 cd /path/to/cv-juan && /usr/bin/python3 weekly_post.py >> /tmp/weekly_post.log 2>&1
+```
+
+Verify your Python path with `which python3`. To use a virtual environment:
+
+```cron
+0 8 * * 5 cd /path/to/cv-juan && /path/to/cv-juan/venv/bin/python weekly_post.py >> /tmp/weekly_post.log 2>&1
+```
+
+### Scheduling — Windows (Task Scheduler)
+
+1. Open **Task Scheduler** → **Create Basic Task**.
+2. **Name:** `Weekly Cyber Post`
+3. **Trigger:** Weekly → Friday → 08:00
+4. **Action:** Start a program
+   - **Program:** `C:\Path\To\Python\python.exe`
+   - **Arguments:** `weekly_post.py`
+   - **Start in:** `C:\path\to\cv-juan`
+5. On the **Conditions** tab, tick *Start only if the following network
+   connection is available* → Any connection.
+6. Click Finish.
+
+Alternatively, create the task from PowerShell (run as Administrator):
+
+```powershell
+$action = New-ScheduledTaskAction `
+    -Execute "python.exe" `
+    -Argument "weekly_post.py" `
+    -WorkingDirectory "C:\path\to\cv-juan"
+
+$trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Friday -At "08:00"
+
+Register-ScheduledTask `
+    -TaskName "WeeklyCyberPost" `
+    -Action $action `
+    -Trigger $trigger `
+    -RunLevel Highest
+```
+
+### Notes
+
+- The generated post is saved to
+  `src/content/blog/YYYY-MM-DD-weekly-cyber-news.md`.
+- If a post for today's date already exists, `git add` will simply update it.
+- Keep `.env` out of git — it is already listed in `.gitignore`
+  (add it if not present).
+
+---
+
 ## Contact
 
 If you have any questions or would like to get in touch, you can reach me on [LinkedIn](https://www.linkedin.com/in/juan-andres-rodriguez-itil).
