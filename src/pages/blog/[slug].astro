@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-IE', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<Layout title={`${post.data.title} — Juan Rodriguez`} description={post.data.summary}>
+  <Header />
+  <main class="min-h-screen bg-dark-900 pt-24 pb-20">
+    <div class="container mx-auto px-6 max-w-3xl">
+
+      <!-- Back link -->
+      <a
+        href={`${import.meta.env.BASE_URL}blog/`}
+        class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm mb-10"
+      >
+        ← Back to Blog
+      </a>
+
+      <!-- Post header -->
+      <header class="mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          {post.data.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 mb-5">
+          <time
+            datetime={post.data.date.toISOString()}
+            class="text-sm text-gray-500"
+          >
+            {formatDate(post.data.date)}
+          </time>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {post.data.tags.map((tag) => (
+            <span class="text-xs bg-blue-950/60 text-blue-400 px-2 py-0.5 rounded-full border border-blue-800/40">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <hr class="border-gray-800 mb-10" />
+
+      <!-- Post content -->
+      <article
+        class="prose prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-blue-300
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+          prose-p:text-gray-300 prose-p:leading-relaxed
+          prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-blue-300
+          prose-strong:text-white prose-strong:font-semibold
+          prose-em:text-gray-300
+          prose-code:text-blue-300 prose-code:bg-dark-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+          prose-pre:bg-dark-800 prose-pre:border prose-pre:border-gray-700 prose-pre:rounded-lg
+          prose-blockquote:border-l-2 prose-blockquote:border-blue-500 prose-blockquote:text-gray-400 prose-blockquote:italic prose-blockquote:pl-4
+          prose-hr:border-gray-700 prose-hr:my-8
+          prose-ul:text-gray-300 prose-ol:text-gray-300
+          prose-li:marker:text-blue-500
+          prose-img:rounded-lg prose-img:border prose-img:border-gray-700"
+      >
+        <Content />
+      </article>
+
+      <!-- Bottom nav -->
+      <div class="mt-16 pt-8 border-t border-gray-800 flex items-center justify-between">
+        <a
+          href={`${import.meta.env.BASE_URL}blog/`}
+          class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm"
+        >
+          ← Back to Blog
+        </a>
+        <a
+          href="https://juandresrodca.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-gray-500 hover:text-blue-400 transition-colors"
+        >
+          Subscribe on Substack ↗
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
