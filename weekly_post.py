@@ -2,7 +2,7 @@
 """
 weekly_post.py — Auto-generate a weekly cybersecurity blog post.
 
-Fetches the latest news from RSS feeds, calls Claude to draft a post in
+Fetches the latest news from RSS feeds, calls Gemini to draft a post in
 Juan's voice, writes the markdown file, and pushes to git.
 
 Usage:
@@ -18,7 +18,7 @@ import textwrap
 from datetime import date, datetime
 from pathlib import Path
 
-import anthropic
+import google.generativeai as genai
 import feedparser
 from dotenv import load_dotenv
 
@@ -48,9 +48,9 @@ RSS_FEEDS = [
     },
 ]
 
-TOP_N = 6  # number of news items to send to Claude (bumped for extra feed)
+TOP_N = 6  # number of news items to send to the model (bumped for extra feed)
 
-MODEL = "claude-opus-4-8"
+MODEL = "gemini-1.5-flash"
 
 REPO_ROOT = Path(__file__).parent.resolve()
 BLOG_DIR = REPO_ROOT / "src" / "content" / "blog"
@@ -144,7 +144,7 @@ def fetch_top_items(n: int = TOP_N) -> list[dict]:
 
 
 def build_user_prompt(items: list[dict], today: date) -> str:
-    """Construct the user message for Claude."""
+    """Construct the user message for the model."""
     lines = [
         f"Today is {today.strftime('%d %B %Y')}.",
         "",
@@ -163,23 +163,35 @@ def build_user_prompt(items: list[dict], today: date) -> str:
     return "\n".join(lines)
 
 
-def call_claude(user_prompt: str) -> str:
-    """Call the Claude API and return the raw text response."""
-    api_key = os.getenv("ANTHROPIC_API_KEY")
+def call_model(user_prompt: str) -> str:
+    """Call the Gemini API and return the raw text response."""
+    api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise EnvironmentError(
-            "ANTHROPIC_API_KEY is not set. "
-            "Copy .env.example to .env and add your key."
+            "GEMINI_API_KEY is not set. "
+            "Copy .env.example to .env and add your key, or set it as a "
+            "GitHub Actions secret."
         )
 
-    client = anthropic.Anthropic(api_key=api_key)
-    message = client.messages.create(
-        model=MODEL,
-        max_tokens=2048,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_prompt}],
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel(
+        model_name=MODEL,
+        system_instruction=SYSTEM_PROMPT,
+        generation_config={"max_output_tokens": 2048},
     )
-    return message.content[0].text
+    response = model.generate_content(user_prompt)
+    text = response.text.strip()
+
+    # Gemini sometimes wraps the whole file in a ```markdown ... ``` fence.
+    # Strip it so the YAML front matter ends up as the very first line.
+    if text.startswith("```"):
+        lines = text.splitlines()
+        lines = lines[1:]  # drop opening fence (```markdown / ```md / ```)
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]  # drop closing fence
+        text = "\n".join(lines).strip()
+
+    return text
 
 
 def extract_frontmatter_field(markdown: str, field: str) -> str:
@@ -265,11 +277,11 @@ def main() -> None:
         sys.exit(1)
     print(f"   Fetched {len(items)} items.")
 
-    # 2. Call Claude
-    print(f"\n2. Calling Claude ({MODEL})...")
+    # 2. Call the model
+    print(f"\n2. Calling Gemini ({MODEL})...")
     user_prompt = build_user_prompt(items, today)
     try:
-        markdown = call_claude(user_prompt)
+        markdown = call_model(user_prompt)
     except EnvironmentError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         sys.exit(1)
