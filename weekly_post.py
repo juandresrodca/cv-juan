@@ -215,6 +215,48 @@ def extract_frontmatter_field(markdown: str, field: str) -> str:
     return match.group(1).strip().strip('"') if match else ""
 
 
+def validate_post(markdown: str) -> None:
+    """Validate the generated markdown before it's written or committed.
+
+    A malformed post (e.g. truncated frontmatter) would crash the Astro
+    build and take the live site down, so we fail loudly here instead.
+    Raises ValueError if the post is not safe to publish.
+    """
+    if not markdown.startswith("---"):
+        raise ValueError("Post does not start with YAML front matter ('---').")
+
+    # The front matter must open AND close with a '---' fence.
+    parts = markdown.split("---", 2)
+    if len(parts) < 3:
+        raise ValueError(
+            "Front matter is not closed with a second '---' fence "
+            "(likely a truncated response)."
+        )
+
+    frontmatter = parts[1]
+    body = parts[2].strip()
+
+    required = ["title", "date", "summary", "draft"]
+    missing = [f for f in required if not extract_frontmatter_field(markdown, f)]
+    if missing:
+        raise ValueError(f"Front matter is missing required field(s): {', '.join(missing)}")
+
+    # Quoted string fields must have balanced quotes (catches truncation
+    # mid-value, which is exactly what broke the build before).
+    import re
+    for field in ("title", "summary"):
+        match = re.search(rf"^{field}:\s*(.+)$", frontmatter, re.MULTILINE)
+        if match:
+            value = match.group(1).strip()
+            if value.startswith('"') and not value.endswith('"'):
+                raise ValueError(f"Front matter field '{field}' has an unterminated quote.")
+
+    if len(body) < 200:
+        raise ValueError(
+            f"Post body is too short ({len(body)} chars) — likely a truncated response."
+        )
+
+
 def write_post(markdown: str, today: date, dry_run: bool) -> Path:
     """Write the generated post to the blog directory."""
     date_str = today.strftime("%Y-%m-%d")
@@ -303,13 +345,24 @@ def main() -> None:
         sys.exit(1)
     print("   Done.")
 
-    # 3. Write file
-    print("\n3. Writing post...")
+    # 3. Validate before touching the filesystem — a malformed post would
+    #    crash the Astro build and take the live site down.
+    print("\n3. Validating post...")
+    try:
+        validate_post(markdown)
+    except ValueError as exc:
+        print(f"ERROR: generated post failed validation: {exc}", file=sys.stderr)
+        print("Refusing to publish. No file written, nothing pushed.", file=sys.stderr)
+        sys.exit(1)
+    print("   Valid.")
+
+    # 4. Write file
+    print("\n4. Writing post...")
     post_path = write_post(markdown, today, dry_run)
 
-    # 4. Git ops
+    # 5. Git ops
     if not dry_run:
-        print("\n4. Committing and pushing...")
+        print("\n5. Committing and pushing...")
         try:
             git_commit_and_push(post_path, today)
             print("   Done. Post is live.")
