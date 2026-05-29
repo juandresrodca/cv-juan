@@ -18,7 +18,8 @@ import textwrap
 from datetime import date, datetime
 from pathlib import Path
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import feedparser
 from dotenv import load_dotenv
 
@@ -50,7 +51,7 @@ RSS_FEEDS = [
 
 TOP_N = 6  # number of news items to send to the model (bumped for extra feed)
 
-MODEL = "gemini-1.5-flash"
+MODEL = "gemini-2.5-flash"
 
 REPO_ROOT = Path(__file__).parent.resolve()
 BLOG_DIR = REPO_ROOT / "src" / "content" / "blog"
@@ -173,14 +174,21 @@ def call_model(user_prompt: str) -> str:
             "GitHub Actions secret."
         )
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name=MODEL,
-        system_instruction=SYSTEM_PROMPT,
-        generation_config={"max_output_tokens": 2048},
+    client = genai.Client(api_key=api_key)
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=user_prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            max_output_tokens=2048,
+        ),
     )
-    response = model.generate_content(user_prompt)
-    text = response.text.strip()
+    text = (response.text or "").strip()
+    if not text:
+        raise RuntimeError(
+            f"Gemini returned an empty response (model={MODEL}). "
+            "Check the model name is still available and the API key is valid."
+        )
 
     # Gemini sometimes wraps the whole file in a ```markdown ... ``` fence.
     # Strip it so the YAML front matter ends up as the very first line.
