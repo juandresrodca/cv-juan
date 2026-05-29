@@ -1,48 +1,63 @@
-# Astro Starter Kit: Basics
+# Personal Portfolio Website
 
-```sh
-npm create astro@latest -- --template basics
-```
+[![Astro](https://img.shields.io/badge/Astro-333333.svg?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+This repository contains the source code for my personal portfolio website, designed to showcase my skills and experience in IT support and cybersecurity. The live version can be accessed at: **[juandresrodca.github.io/cv-juan/](https://juandresrodca.github.io/cv-juan/)**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<!--
+**Add a screenshot of your portfolio's homepage here!**
+![Portfolio Screenshot](path/to/your/screenshot.png)
+-->
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Features
 
-## 🚀 Project Structure
+- **Responsive Design:** Fully responsive layout that works on all devices, from mobile to desktop.
+- **Project Showcase:** Detailed project pages with write-ups and links to live demos and source code.
+- **Interactive Components:** Engaging user experience with animations and interactive elements.
+- **Blog/Write-ups:** A dedicated section for cybersecurity write-ups and articles.
+- **Contact Form:** A contact section with links to email, LinkedIn, and a downloadable CV.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Technologies Used
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+This portfolio is built with a modern tech stack:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **[Astro](https://docs.astro.build/):** The primary framework for building this fast, content-focused website.
+- **[React](https://react.dev/learn):** Used for creating interactive UI components within the Astro ecosystem.
+- **[Tailwind CSS](https://tailwindcss.com/docs):** A utility-first CSS framework for rapid and responsive styling.
+- **[JavaScript (Vanilla JS)](https://developer.mozilla.org/en-US/docs/Web/JavaScript):** Powers dynamic interactions and animations.
+- **[GitHub Pages](https://docs.github.com/en/pages):** Hosts the live version of the portfolio.
+- **[GitHub Actions](https://docs.github.com/en/actions):** Automates the build and deployment process.
 
-## 🧞 Commands
+## Setup and Local Development
 
-All commands are run from the root of the project, from a terminal:
+To run this project locally, follow these steps:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/juandresrodca/cv-juan.git
+    cd cv-juan
+    ```
 
-## 👀 Want to learn more?
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+    The site will be accessible at `http://localhost:4321`.
+
+## Deployment
+
+This project is automatically deployed to GitHub Pages using a GitHub Actions workflow. Any push to the `main` branch will trigger a new build and deployment.
+
+## Contact
+
+If you have any questions or would like to get in touch, you can reach me on [LinkedIn](https://www.linkedin.com/in/juan-andres-rodriguez-itil).
+
+**Author:** Juan Rodriguez

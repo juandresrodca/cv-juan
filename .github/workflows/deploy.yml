@@ -3,15 +3,17 @@ name: Deploy Astro Project to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+  workflow_dispatch: # Permite la ejecución manual del workflow
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -23,27 +25,40 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Cache Node Modules ⚡️
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies 📦
-        run: npm ci
+      - name: Clean install dependencies 📦
+        run: |
+          rm -rf node_modules package-lock.json
+          npm cache clean --force
+          npm install --legacy-peer-deps
 
       - name: Build Astro project 🏗️
         run: npm run build
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: peaceiris/actions-gh-pages@v4
+      - name: List dist contents 🔍
+        run: ls -R dist
+
+      # REMOVED: - name: Setup Pages ⚙️ (This step was causing the TypeError)
+      # REMOVED:   uses: actions/configure-pages@v5
+      # REMOVED:   with:
+      # REMOVED:     static_site_generator: 'astro'
+      # REMOVED:     enable_jekyll: false
+
+      - name: Upload artifact ⬆️
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist # Keep this as is for now
-          publish_branch: gh-pages
-          force_orphan: true
-          # Add this line to explicitly set the destination directory to the root of the gh-pages branch
-          # This might be redundant with publish_dir but can sometimes help if the action interprets paths differently.
-          # cname: 'juandresrodca.github.io' # ONLY add this if you are setting up a custom domain (not repo pages)
+          path: './dist' # Ensure this path is correct relative to the working directory
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+          # This action automatically deploys the artifact uploaded by 'actions/upload-pages-artifact'
+          # No need to specify publish_dir or artifact_name here, it picks it up automatically.
+          # cname: 'juandresrodca.github.io' # Uncomment and adjust if using a custom domain
