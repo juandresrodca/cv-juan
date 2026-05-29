@@ -58,31 +58,34 @@
   const menu = document.getElementById('mobile-menu');
   const icon = document.getElementById('menu-icon');
 
-  function openMenu() {
-    menu.classList.remove('hidden');
-    btn.setAttribute('aria-expanded', 'true');
-    icon.textContent = '✕';
+  if (btn && menu && icon) {
+    const openMenu = () => {
+      menu.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      icon.textContent = '✕';
+    };
+
+    const closeMenu = () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      icon.textContent = '☰';
+    };
+
+    btn.addEventListener('click', () => {
+      menu.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+
+    // Close when any link inside the mobile menu is tapped
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close when tapping outside the header
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (!btn.contains(target) && !menu.contains(target)) {
+        closeMenu();
+      }
+    });
   }
-
-  function closeMenu() {
-    menu.classList.add('hidden');
-    btn.setAttribute('aria-expanded', 'false');
-    icon.textContent = '☰';
-  }
-
-  btn.addEventListener('click', () => {
-    menu.classList.contains('hidden') ? openMenu() : closeMenu();
-  });
-
-  // Close when any link inside the mobile menu is tapped
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Close when tapping outside the header
-  document.addEventListener('click', (e) => {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      closeMenu();
-    }
-  });
 </script>
