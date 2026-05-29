@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Job Application Tracker
-description: A web application designed to streamline the job application process by tracking submissions, follow-ups, and responses.
-tags: ["Web Application", "Job Search", "Productivity"]
+description: A .NET 8 WPF desktop app built on Clean Architecture (MVVM, SQLite + Dapper) with a Kanban board, PDF job-posting extraction, Obsidian markdown sync, and an xUnit test suite.
+tags: ["C#", ".NET 8", "WPF", "Clean Architecture", "SQLite", "xUnit"]
 emoji: "📋"
-gradient: "from-blue-500 to-cyan-600"
+gradient: "from-purple-500 to-pink-600"
 github: "https://github.com/juandresrodca/job-application-tracker"
 publishDate: 2024-01-01
 ---
