@@ -36,6 +36,18 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Verify GEMINI_API_KEY is set
+        run: |
+          if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
+            echo "ERROR: GEMINI_API_KEY secret is not set in this repository."
+            echo "Go to Settings → Secrets → Actions → New repository secret"
+            echo "Name: GEMINI_API_KEY  Value: your key from aistudio.google.com"
+            exit 1
+          fi
+          echo "GEMINI_API_KEY is set (length: ${#GEMINI_API_KEY} chars)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
       - name: Generate and push weekly post
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

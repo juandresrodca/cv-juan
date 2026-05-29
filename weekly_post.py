@@ -233,8 +233,9 @@ def git_commit_and_push(post_path: Path, today: date) -> None:
         result = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
         if result.stdout:
             print(result.stdout.rstrip())
-        if result.returncode != 0:
+        if result.stderr:
             print(result.stderr.rstrip(), file=sys.stderr)
+        if result.returncode != 0:
             raise RuntimeError(f"Command failed: {' '.join(cmd)}")
 
     run(["git", "add", rel_path])
@@ -246,7 +247,7 @@ def git_commit_and_push(post_path: Path, today: date) -> None:
             f"feat(blog): add weekly cyber news post {date_str}",
         ]
     )
-    run(["git", "push"])
+    run(["git", "push", "origin", "HEAD"])
 
 
 # ---------------------------------------------------------------------------
@@ -284,6 +285,9 @@ def main() -> None:
         markdown = call_model(user_prompt)
     except EnvironmentError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as exc:
+        print(f"ERROR calling Gemini API: {type(exc).__name__}: {exc}", file=sys.stderr)
         sys.exit(1)
     print("   Done.")
 
