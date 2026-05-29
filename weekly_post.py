@@ -180,7 +180,11 @@ def call_model(user_prompt: str) -> str:
         contents=user_prompt,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
-            max_output_tokens=2048,
+            max_output_tokens=8192,
+            # Disable thinking — this is a structured writing task that doesn't
+            # benefit from it, and thinking tokens would otherwise consume the
+            # output budget and truncate the post mid-frontmatter.
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
         ),
     )
     text = (response.text or "").strip()
