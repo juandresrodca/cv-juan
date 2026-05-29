@@ -41,11 +41,16 @@ RSS_FEEDS = [
         "name": "CISA Alerts",
         "url": "https://www.cisa.gov/cybersecurity-advisories/advisories.xml",
     },
+    # Smashing Security — podcast + show notes (verify slug at smashingsecurity.com/rss)
+    {
+        "name": "Smashing Security",
+        "url": "https://feeds.acast.com/public/shows/smashing-security",
+    },
 ]
 
-TOP_N = 5  # number of news items to send to Claude
+TOP_N = 6  # number of news items to send to Claude (bumped for extra feed)
 
-MODEL = "claude-sonnet-4-20250514"
+MODEL = "claude-opus-4-8"
 
 REPO_ROOT = Path(__file__).parent.resolve()
 BLOG_DIR = REPO_ROOT / "src" / "content" / "blog"
