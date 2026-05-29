@@ -1,11 +1,14 @@
 ---
 layout: ../../layouts/Layout.astro
-title: htb-writeups
-description: Detailed overview of my write up.
+title: HackTheBox Write-ups
+description: Penetration testing walkthroughs for retired HTB machines.
 ---
 
-# writeups
+# HackTheBox Write-ups
 
-## Project Overview
-This project focuses on show the steps done on a CTF machine 
-...
+Detailed walkthroughs covering enumeration, exploitation, and privilege escalation
+techniques on retired Hack The Box machines.
+
+## Available Write-ups
+
+- [Dog (Linux · CVE-2022-42092)](/cv-juan/projects/HTB-Dog/)
