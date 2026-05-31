@@ -4,7 +4,7 @@
                 <!-- Typewriter effect greeting -->
                 <div class="animate-fade-in">
                     <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient typewriter-header">
-                        <span id="typed-text"></span><span class="cursor">|</span>
+                        <span id="typed-text">Hi, I'm Juan</span><span class="cursor">|</span>
                     </h1>
                 </div>
 
@@ -61,7 +61,7 @@
     ];
 
     let phraseIdx = 0;
-    let charIdx = 0;
+    let charIdx = phrases[0].length;
     let isDeleting = false;
     const el = document.getElementById('typed-text');
 
