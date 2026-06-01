@@ -42,4 +42,3 @@ That’s it for this week. Stay safe out there, keep those patches rolling, and 
 
 Juan Rodriguez
 IT Systems Administrator & Cybersecurity Specialist
-Intel Ireland
