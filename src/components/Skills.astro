@@ -376,7 +376,7 @@ const SKILLS = [
 
     // Spokes + labels
     const shortNames = ['Service','Infra','Support','Security','Cloud','Dev'];
-    SKILLS.forEach((s,i) => {
+    SKILLS.forEach((_,i) => {
       const angle = 2*Math.PI*i/N;
       const [x1,y1] = polar(angle, R);
       const ln = document.createElementNS(NS,'line');
@@ -426,9 +426,9 @@ const SKILLS = [
 
     // ── Radar vertex hover ──
     svg.addEventListener('mouseover', (e) => {
-      const hit = (e.target as Element).closest('[data-ri]');
+      const hit = e.target && e.target.closest ? e.target.closest('[data-ri]') : null;
       if (!hit) return;
-      const i = parseInt((hit as HTMLElement).dataset.ri ?? '0');
+      const i = parseInt(hit.dataset.ri ?? '0');
       const s = SKILLS[i];
 
       const lbl = document.getElementById('radar-lbl-'+i);
@@ -449,9 +449,9 @@ const SKILLS = [
     });
 
     svg.addEventListener('mouseout', (e) => {
-      const hit = (e.target as Element).closest('[data-ri]');
+      const hit = e.target && e.target.closest ? e.target.closest('[data-ri]') : null;
       if (!hit) return;
-      const i = parseInt((hit as HTMLElement).dataset.ri ?? '0');
+      const i = parseInt(hit.dataset.ri ?? '0');
       const lbl = document.getElementById('radar-lbl-'+i);
       if (lbl) { lbl.setAttribute('fill','#9ca3af'); lbl.setAttribute('font-weight','500'); }
       const dot = document.getElementById('radar-dot-'+i);
@@ -469,7 +469,7 @@ const SKILLS = [
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         let frame = 0; const steps = 60;
-        const ease = (t: number) => 1 - Math.pow(1-t, 3);
+        const ease = (t) => 1 - Math.pow(1-t, 3);
         const tick = setInterval(() => {
           frame++;
           const t = ease(Math.min(frame/steps, 1));
