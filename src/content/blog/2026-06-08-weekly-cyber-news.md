@@ -46,6 +46,6 @@ CISA has added a high-severity denial-of-service (DoS) flaw in SolarWinds Serv-U
 
 That wraps up this week's dive into the latest cybersecurity news. Stay vigilant, patch everything, and keep an eye on both your digital and physical perimeters.
 
+Cheers,
+
 Juan Rodriguez
-IT Systems Administrator & Cybersecurity Specialist
-Intel Ireland

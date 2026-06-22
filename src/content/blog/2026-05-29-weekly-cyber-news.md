@@ -41,3 +41,7 @@ Alongside the AI narrative, the usual parade of critical CVEs continued. Unpatch
 ---
 
 Busy week. As always, the fundamentals still matter: patch fast, monitor identity, and treat any unapproved SaaS like the potential insider threat it is. Stay sharp.
+
+Cheers,
+
+Juan Rodriguez

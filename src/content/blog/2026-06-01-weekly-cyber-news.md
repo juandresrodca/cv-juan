@@ -40,5 +40,6 @@ Finally, The Hacker News reported on active exploitation of a critical flaw in W
 
 That’s it for this week. Stay safe out there, keep those patches rolling, and don't trust any AI with your password just yet.
 
+Cheers,
+
 Juan Rodriguez
-IT Systems Administrator & Cybersecurity Specialist

@@ -50,5 +50,6 @@ That’s a wrap for this week. It’s clear that the bad actors are innovating, 
 
 Stay safe out there,
 
+Cheers,
+
 Juan Rodriguez
-IT Systems Administrator & Cybersecurity Specialist, Intel Ireland
