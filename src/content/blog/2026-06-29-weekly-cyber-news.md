@@ -46,6 +46,6 @@ The Security Service of Ukraine (SSU), in collaboration with the FBI, has uncove
 
 That wraps up this week's dive into the cyber landscape. Stay vigilant, stay curious, and keep those patches rolling!
 
+Cheers,
+
 Juan Rodriguez
-IT Systems Administrator & Cybersecurity Specialist
-Intel Ireland
