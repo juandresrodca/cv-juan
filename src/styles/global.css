@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Motion system: one quint ease-out curve, two durations */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur: 0.6s;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -26,17 +33,29 @@
     @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
   }
 
+  /* Section titles: white heading with one gradient accent word (in <em>)
+     and a thin gradient rule below — replaces the old neon-pulse glow. */
   .section-title {
-    @apply text-4xl md:text-5xl font-bold text-center mb-12 text-gradient;
-    text-shadow:
-      0 0 7px rgba(59, 130, 246, 0.6),
-      0 0 20px rgba(59, 130, 246, 0.4),
-      0 0 40px rgba(59, 130, 246, 0.2);
-    animation: neon-pulse 3s ease-in-out infinite alternate;
+    @apply text-3xl md:text-4xl font-extrabold text-white;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: normal;
+    @apply bg-gradient-to-r from-primary-500 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  .title-rule {
+    width: 64px;
+    height: 3px;
+    border-radius: 2px;
+    margin: 18px 0 56px;
+    background: linear-gradient(90deg, #3b82f6, #22d3ee);
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-500 to-accent-400 bg-clip-text text-transparent;
   }
 
   .card {
@@ -80,15 +99,15 @@
 }
 
 #about {
-  background: rgba(31, 41, 55, 0.15) !important;
+  background: rgba(17, 26, 46, 0.45) !important;
   position: relative;
 }
 
-/* ====== SCROLL REVEAL ANIMATIONS ====== */
+/* ====== SCROLL REVEAL ANIMATIONS — quint ease-out curve ====== */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(28px);
+  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
 }
 
 .scroll-reveal.revealed {
@@ -158,19 +177,20 @@
   transform: scaleX(0);
 }
 
-/* ====== TEXT SHADOW HOVER EFFECTS ON NAV LINKS ====== */
+/* ====== NAV LINKS — mono type, soft hover ====== */
 .nav-link {
-  --h: 1.2em;
-  line-height: var(--h);
-  color: transparent;
-  text-shadow: 0 0 #fff, 0 var(--h) #3b82f6;
-  overflow: hidden;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
   display: inline-block;
-  transition: 0.3s;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
 }
 
 .nav-link:hover {
-  text-shadow: 0 calc(-1 * var(--h)) #fff, 0 0 #3b82f6;
+  color: #e2e8f0;
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 /* ====== CSS SCROLL-DRIVEN PARALLAX FOR BACKGROUND ====== */
@@ -221,19 +241,103 @@
   50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8); }
 }
 
-/* ====== NEON GLOW TEXT ====== */
-@keyframes neon-pulse {
-  from {
-    text-shadow:
-      0 0 7px rgba(59, 130, 246, 0.6),
-      0 0 20px rgba(59, 130, 246, 0.4),
-      0 0 40px rgba(59, 130, 246, 0.2);
+/* ====== SURFACE CARD (v2) — contact cards, lift-not-zoom hover ====== */
+.card-v2 {
+  background: linear-gradient(180deg, #16213a, #111a2e);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 14px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.card-v2::before {
+  /* inner top edge highlight */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent);
+}
+
+.card-v2:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(59, 130, 246, 0.08);
+}
+
+/* ====== HERO CTA BUTTONS — lift + arrow slide instead of zoom ====== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2563eb, #0891b2);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 24px -8px rgba(37, 99, 235, 0.5);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 14px 32px -8px rgba(37, 99, 235, 0.65);
+}
+
+.btn-cta .arr {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.btn-cta:hover .arr {
+  transform: translateX(4px);
+}
+
+.btn-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: 10px;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.btn-cta-ghost:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+/* ====== REDUCED MOTION — hard accessibility constraint ====== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  to {
-    text-shadow:
-      0 0 10px rgba(59, 130, 246, 0.8),
-      0 0 30px rgba(59, 130, 246, 0.5),
-      0 0 60px rgba(59, 130, 246, 0.3);
+
+  .scroll-reveal,
+  .scroll-reveal-stagger > *,
+  .timeline-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #background-canvas {
+    display: none;
   }
 }
 

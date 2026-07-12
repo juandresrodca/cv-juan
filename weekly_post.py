@@ -18,7 +18,8 @@ import textwrap
 from datetime import date, datetime
 from pathlib import Path
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import feedparser
 from dotenv import load_dotenv
 
@@ -50,7 +51,7 @@ RSS_FEEDS = [
 
 TOP_N = 6  # number of news items to send to the model (bumped for extra feed)
 
-MODEL = "gemini-1.5-flash"
+MODEL = "gemini-2.5-flash"
 
 REPO_ROOT = Path(__file__).parent.resolve()
 BLOG_DIR = REPO_ROOT / "src" / "content" / "blog"
@@ -173,14 +174,25 @@ def call_model(user_prompt: str) -> str:
             "GitHub Actions secret."
         )
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name=MODEL,
-        system_instruction=SYSTEM_PROMPT,
-        generation_config={"max_output_tokens": 2048},
+    client = genai.Client(api_key=api_key)
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=user_prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            max_output_tokens=8192,
+            # Disable thinking — this is a structured writing task that doesn't
+            # benefit from it, and thinking tokens would otherwise consume the
+            # output budget and truncate the post mid-frontmatter.
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
+        ),
     )
-    response = model.generate_content(user_prompt)
-    text = response.text.strip()
+    text = (response.text or "").strip()
+    if not text:
+        raise RuntimeError(
+            f"Gemini returned an empty response (model={MODEL}). "
+            "Check the model name is still available and the API key is valid."
+        )
 
     # Gemini sometimes wraps the whole file in a ```markdown ... ``` fence.
     # Strip it so the YAML front matter ends up as the very first line.
@@ -201,6 +213,48 @@ def extract_frontmatter_field(markdown: str, field: str) -> str:
     pattern = rf"^{field}:\s*(.+)$"
     match = re.search(pattern, markdown, re.MULTILINE)
     return match.group(1).strip().strip('"') if match else ""
+
+
+def validate_post(markdown: str) -> None:
+    """Validate the generated markdown before it's written or committed.
+
+    A malformed post (e.g. truncated frontmatter) would crash the Astro
+    build and take the live site down, so we fail loudly here instead.
+    Raises ValueError if the post is not safe to publish.
+    """
+    if not markdown.startswith("---"):
+        raise ValueError("Post does not start with YAML front matter ('---').")
+
+    # The front matter must open AND close with a '---' fence.
+    parts = markdown.split("---", 2)
+    if len(parts) < 3:
+        raise ValueError(
+            "Front matter is not closed with a second '---' fence "
+            "(likely a truncated response)."
+        )
+
+    frontmatter = parts[1]
+    body = parts[2].strip()
+
+    required = ["title", "date", "summary", "draft"]
+    missing = [f for f in required if not extract_frontmatter_field(markdown, f)]
+    if missing:
+        raise ValueError(f"Front matter is missing required field(s): {', '.join(missing)}")
+
+    # Quoted string fields must have balanced quotes (catches truncation
+    # mid-value, which is exactly what broke the build before).
+    import re
+    for field in ("title", "summary"):
+        match = re.search(rf"^{field}:\s*(.+)$", frontmatter, re.MULTILINE)
+        if match:
+            value = match.group(1).strip()
+            if value.startswith('"') and not value.endswith('"'):
+                raise ValueError(f"Front matter field '{field}' has an unterminated quote.")
+
+    if len(body) < 200:
+        raise ValueError(
+            f"Post body is too short ({len(body)} chars) — likely a truncated response."
+        )
 
 
 def write_post(markdown: str, today: date, dry_run: bool) -> Path:
@@ -233,8 +287,9 @@ def git_commit_and_push(post_path: Path, today: date) -> None:
         result = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
         if result.stdout:
             print(result.stdout.rstrip())
-        if result.returncode != 0:
+        if result.stderr:
             print(result.stderr.rstrip(), file=sys.stderr)
+        if result.returncode != 0:
             raise RuntimeError(f"Command failed: {' '.join(cmd)}")
 
     run(["git", "add", rel_path])
@@ -246,7 +301,7 @@ def git_commit_and_push(post_path: Path, today: date) -> None:
             f"feat(blog): add weekly cyber news post {date_str}",
         ]
     )
-    run(["git", "push"])
+    run(["git", "push", "origin", "HEAD"])
 
 
 # ---------------------------------------------------------------------------
@@ -285,15 +340,29 @@ def main() -> None:
     except EnvironmentError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         sys.exit(1)
+    except Exception as exc:
+        print(f"ERROR calling Gemini API: {type(exc).__name__}: {exc}", file=sys.stderr)
+        sys.exit(1)
     print("   Done.")
 
-    # 3. Write file
-    print("\n3. Writing post...")
+    # 3. Validate before touching the filesystem — a malformed post would
+    #    crash the Astro build and take the live site down.
+    print("\n3. Validating post...")
+    try:
+        validate_post(markdown)
+    except ValueError as exc:
+        print(f"ERROR: generated post failed validation: {exc}", file=sys.stderr)
+        print("Refusing to publish. No file written, nothing pushed.", file=sys.stderr)
+        sys.exit(1)
+    print("   Valid.")
+
+    # 4. Write file
+    print("\n4. Writing post...")
     post_path = write_post(markdown, today, dry_run)
 
-    # 4. Git ops
+    # 5. Git ops
     if not dry_run:
-        print("\n4. Committing and pushing...")
+        print("\n5. Committing and pushing...")
         try:
             git_commit_and_push(post_path, today)
             print("   Done. Post is live.")

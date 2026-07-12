@@ -60,4 +60,6 @@ This is the kind of advisory that doesn't get the same Twitter hype as a splashy
 
 That's the week. Patch the FortiOS, audit your OAuth apps, and subscribe to the CISA alerts RSS if you haven't already. See you next Friday.
 
-— Juan
+Cheers,
+
+Juan Rodriguez

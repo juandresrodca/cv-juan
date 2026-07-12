@@ -54,7 +54,7 @@ const staticProjects = [
         description: "An AI-powered service-desk assistant (Python + Streamlit) that walks through root-cause analysis and step-by-step troubleshooting across Windows, networking, M365, and security issues.",
         tags: ["Python", "Streamlit", "OpenAI API", "AI"],
         link: "https://github.com/juandresrodca/AI-IT-Support-Copilot",
-        github: "https://github.com/juandresrodca/AI-IT-Support-Copilot",
+        github: null,
         emoji: "🤖",
         gradient: "from-teal-500 to-blue-600",
         linkLabel: "GitHub"
@@ -67,13 +67,14 @@ const staticProjects = [
         github: null,
         emoji: "🔒",
         gradient: "from-red-600 to-orange-700",
-        linkLabel: "See Evidence"
+        linkLabel: "HTB Write-up"
     }
 ];
 ---
 <section id="projects" class="scroll-reveal py-20 bg-dark-800 bg-opacity-40">
     <div class="container mx-auto px-6">
-        <h2 class="section-title">My Projects and Write-ups</h2>
+        <h2 class="section-title">My Projects and <em>Write-ups</em></h2>
+        <div class="title-rule"></div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {sortedWriteups.map((writeup) => (
                 <div class="card glow-card tilt-card group hover:scale-105 transition-transform duration-300">

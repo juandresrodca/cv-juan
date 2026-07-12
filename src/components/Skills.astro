@@ -1,126 +1,487 @@
- <!-- Skills Section -->
-    <section id="skills" class="scroll-reveal py-20 bg-transparent">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title">Technical Skills</h2>
+---
+const SKILLS = [
+  {
+    name: "Service Management & ITIL",
+    pct: 90,
+    color: "#8b5cf6",
+    items: ["ServiceNow Platform Admin","CMDB management","SIAM environment expertise","Incident & Change control","SLA/KPI monitoring","ITIL v3 Certified"]
+  },
+  {
+    name: "Infrastructure & Systems Admin",
+    pct: 85,
+    color: "#06b6d4",
+    items: ["MS Server 2016/2019 & AD","VMware ESXi & Hyper-V","Citrix Environments","Linux (Ubuntu/Debian) Admin","SCCM, Intune, Autopilot","Firewalls, VLANs & VOIP/PBX"]
+  },
+  {
+    name: "End-User Support & Delivery",
+    pct: 92,
+    color: "#10b981",
+    items: ["Windows 10/11 & macOS","Hardware/Software Troubleshooting","Asset Management","MDM (Android/iOS)","JAMF & Microsoft Intune","Multi-Language Support (EN/ES)"]
+  },
+  {
+    name: "Security & Compliance",
+    pct: 72,
+    color: "#3b82f6",
+    items: ["Trellix EDR Administration","Endpoint Security Monitoring","ISO 27001 & GDPR Compliance","Certificate-based Security","VPN Management","Backup Systems (Veeam)"]
+  },
+  {
+    name: "Cloud Technologies & Platforms",
+    pct: 75,
+    color: "#f59e0b",
+    items: ["Microsoft 365 (Exchange, Teams)","Microsoft Azure Admin","AWS, Azure, VMware integration","Cloud Automation (ARM, CFT)","WordPress Web App Configuration","Hybrid Environment Support"]
+  },
+  {
+    name: "Development & Automation",
+    pct: 62,
+    color: "#f97316",
+    items: ["PowerShell & Bash Scripting","Python, C#, JS, Java","SQL Schema Design","XML, JSON & RegEx","Wireshark & Traceroute","Object-Oriented Programming"]
+  },
+];
+---
 
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Management -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">⚙️</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">Service Management & ITIL</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• ServiceNow Platform Admin</li>
-                            <li>• CMDB management</li>
-                            <li>• SIAM environment expertise</li>
-                            <li>• Incident & Change control</li>
-                            <li>• SLA/KPI monitoring</li>
-                            <li>• ITIL v3 Certified</li>
-                        </ul>
-                    </div>
+<!-- Skills Section -->
+<section id="skills" class="scroll-reveal py-20 bg-transparent">
+  <div class="container mx-auto px-6">
+    <h2 class="section-title">Technical <em>Skills</em></h2>
+    <div class="title-rule"></div>
+    <div class="max-w-6xl mx-auto">
 
-                    <!-- Infrastructure -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">🖥️</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">Infrastructure & Systems Admin</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• MS Server 2016/2019 & AD</li>
-                            <li>• VMware ESXi & Hyper-V</li>
-                            <li>• Citrix Environments</li>
-                            <li>• Linux (Ubuntu/Debian) Admin</li>
-                            <li>• SCCM, Intune, Autopilot</li>
-                            <li>• Firewalls, VLANs & VOIP/PBX</li>
-                        </ul>
-                    </div>
-
-                    <!-- Cloud Technologies -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">☁️</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">Cloud Technologies & Platforms</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• Microsoft 365 (Exchange, Teams)</li>
-                            <li>• Microsoft Azure Admin</li>
-                            <li>• AWS, Azure, VMware integration</li>
-                            <li>• Cloud Automation (ARM, CFT)</li>
-                            <li>• WordPress Web App Configuration</li>
-                            <li>• Hybrid Environment Support</li>
-                        </ul>
-                    </div>
-
-                    <!-- End-User Support -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">💻</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">End-User Support & Delivery</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• Windows 10/11 & macOS</li>
-                            <li>• Hardware/Software Troubleshooting</li>
-                            <li>• Asset Management</li>
-                            <li>• MDM (Android/iOS)</li>
-                            <li>• JAMF & Microsoft Intune</li>
-                            <li>• Multi-Language Support (EN/ES)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Security & Compliance -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">🛡️</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">Security & Compliance</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• Trellix EDR Administration</li>
-                            <li>• Endpoint Security Monitoring</li>
-                            <li>• ISO 27001 & GDPR Compliance</li>
-                            <li>• Certificate-based Security</li>
-                            <li>• VPN Management</li>
-                            <li>• Backup Systems (Veeam)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Development & Automation -->
-                    <div class="card glow-card">
-                        <div class="text-4xl mb-4">🔧</div>
-                        <h3 class="text-xl font-bold mb-4 text-primary-400">Development & Automation</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• PowerShell & Bash Scripting</li>
-                            <li>• Python, C#, JS, Java</li>
-                            <li>• SQL Schema Design</li>
-                            <li>• XML, JSON & RegEx</li>
-                            <li>• Wireshark & Traceroute</li>
-                            <li>• Object-Oriented Programming</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Education & Certifications -->
-                <div class="mt-16 text-center">
-                    <h3 class="text-3xl font-bold mb-8 text-gradient">Education & Certifications</h3>
-                    <div class="flex flex-wrap justify-center gap-6 mb-10">
-                        <div class="bg-red-600/20 border border-red-600/30 rounded-lg px-6 py-4 text-center">
-                            <div class="text-2xl mb-2">🛡️</div>
-                            <div class="font-bold text-red-400">Microsoft Defender XDR</div>
-                            <div class="text-sm text-gray-400">Applied Skills (Mar 2026)</div>
-                        </div>
-                        <div class="bg-green-600/20 border border-green-600/30 rounded-lg px-6 py-4 text-center">
-                            <div class="text-2xl mb-2">✅</div>
-                            <div class="font-bold text-green-400">ITIL v3</div>
-                            <div class="text-sm text-gray-400">Certified</div>
-                        </div>
-                        <div class="bg-orange-600/20 border border-orange-600/30 rounded-lg px-6 py-4 text-center">
-                            <div class="text-2xl mb-2">🔄</div>
-                            <div class="font-bold text-orange-400">OSCP</div>
-                            <div class="text-sm text-gray-400">In Progress</div>
-                        </div>
-                        <div class="bg-blue-600/20 border border-blue-600/30 rounded-lg px-6 py-4 text-center">
-                            <div class="text-2xl mb-2">🎓</div>
-                            <div class="font-bold text-blue-400">IT Programmer Analyst</div>
-                            <div class="text-sm text-gray-400">ORT University</div>
-                        </div>
-                        <div class="bg-purple-600/20 border border-purple-600/30 rounded-lg px-6 py-4 text-center">
-                            <div class="text-2xl mb-2">🔐</div>
-                            <div class="font-bold text-purple-400">Ethical Hacking</div>
-                            <div class="text-sm text-gray-400">ORT University (2019)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- ══ MOBILE: original card grid (hidden on md+) ══ -->
+      <div class="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">⚙️</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">Service Management & ITIL</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• ServiceNow Platform Admin</li><li>• CMDB management</li>
+            <li>• SIAM environment expertise</li><li>• Incident & Change control</li>
+            <li>• SLA/KPI monitoring</li><li>• ITIL v3 Certified</li>
+          </ul>
         </div>
-    </section>
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">🖥️</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">Infrastructure & Systems Admin</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• MS Server 2016/2019 & AD</li><li>• VMware ESXi & Hyper-V</li>
+            <li>• Citrix Environments</li><li>• Linux (Ubuntu/Debian) Admin</li>
+            <li>• SCCM, Intune, Autopilot</li><li>• Firewalls, VLANs & VOIP/PBX</li>
+          </ul>
+        </div>
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">☁️</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">Cloud Technologies & Platforms</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• Microsoft 365 (Exchange, Teams)</li><li>• Microsoft Azure Admin</li>
+            <li>• AWS, Azure, VMware integration</li><li>• Cloud Automation (ARM, CFT)</li>
+            <li>• WordPress Web App Configuration</li><li>• Hybrid Environment Support</li>
+          </ul>
+        </div>
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">End-User Support & Delivery</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• Windows 10/11 & macOS</li><li>• Hardware/Software Troubleshooting</li>
+            <li>• Asset Management</li><li>• MDM (Android/iOS)</li>
+            <li>• JAMF & Microsoft Intune</li><li>• Multi-Language Support (EN/ES)</li>
+          </ul>
+        </div>
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">🛡️</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">Security & Compliance</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• Trellix EDR Administration</li><li>• Endpoint Security Monitoring</li>
+            <li>• ISO 27001 & GDPR Compliance</li><li>• Certificate-based Security</li>
+            <li>• VPN Management</li><li>• Backup Systems (Veeam)</li>
+          </ul>
+        </div>
+        <div class="card glow-card">
+          <div class="text-4xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold mb-4 text-primary-400">Development & Automation</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li>• PowerShell & Bash Scripting</li><li>• Python, C#, JS, Java</li>
+            <li>• SQL Schema Design</li><li>• XML, JSON & RegEx</li>
+            <li>• Wireshark & Traceroute</li><li>• Object-Oriented Programming</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ══ DESKTOP: animated bars + radar (hidden on mobile) ══ -->
+      <div class="hidden md:block">
+        <div class="skills-animated-grid">
+
+          <!-- Left: progress bars -->
+          <div class="sa-panel" id="bars-panel">
+            <div class="sa-panel-header">
+              <span class="sa-dot" style={`background:#3b82f6`}></span>
+              SKILL PROFICIENCY — 14+ YEARS ENTERPRISE IT
+            </div>
+            {SKILLS.map((s, i) => (
+              <div class="sa-skill-row" id={`row-${i}`} data-index={String(i)}
+                   data-items={s.items.join('||')} data-color={s.color} data-name={s.name}>
+                <div class="sa-skill-meta">
+                  <span class="sa-skill-name">{s.name}</span>
+                  <span class="sa-skill-pct" id={`pct-${i}`} style={`color:${s.color}`}>0%</span>
+                </div>
+                <div class="sa-bar-track">
+                  <div class="sa-bar-fill" id={`bar-${i}`}
+                       data-pct={String(s.pct)}
+                       style={`background:${s.color};--bar-color:${s.color}`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Right: radar chart (SVG built by JS) -->
+          <div class="sa-panel sa-radar-panel">
+            <div class="sa-panel-header">
+              <span class="sa-dot" style={`background:#8b5cf6`}></span>
+              SKILL RADAR
+            </div>
+            <svg id="radar-svg" viewBox="0 0 300 300" style="width:100%;flex:1"></svg>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══ Education & Certifications (always visible) ══ -->
+      <div class="mt-16 text-center">
+        <h3 class="text-3xl font-bold mb-8 text-gradient">Education & Certifications</h3>
+        <div class="flex flex-wrap justify-center gap-6 mb-10">
+          <div class="bg-red-600/20 border border-red-600/30 rounded-lg px-6 py-4 text-center">
+            <div class="text-2xl mb-2">🛡️</div>
+            <div class="font-bold text-red-400">Microsoft Defender XDR</div>
+            <div class="text-sm text-gray-400">Applied Skills (Mar 2026)</div>
+          </div>
+          <div class="bg-green-600/20 border border-green-600/30 rounded-lg px-6 py-4 text-center">
+            <div class="text-2xl mb-2">✅</div>
+            <div class="font-bold text-green-400">ITIL v3</div>
+            <div class="text-sm text-gray-400">Certified</div>
+          </div>
+          <div class="bg-orange-600/20 border border-orange-600/30 rounded-lg px-6 py-4 text-center">
+            <div class="text-2xl mb-2">🔄</div>
+            <div class="font-bold text-orange-400">OSCP</div>
+            <div class="text-sm text-gray-400">In Progress</div>
+          </div>
+          <div class="bg-blue-600/20 border border-blue-600/30 rounded-lg px-6 py-4 text-center">
+            <div class="text-2xl mb-2">🎓</div>
+            <div class="font-bold text-blue-400">IT Programmer Analyst</div>
+            <div class="text-sm text-gray-400">ORT University</div>
+          </div>
+          <div class="bg-purple-600/20 border border-purple-600/30 rounded-lg px-6 py-4 text-center">
+            <div class="text-2xl mb-2">🔐</div>
+            <div class="font-bold text-purple-400">Ethical Hacking</div>
+            <div class="text-sm text-gray-400">ORT University (2019)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Layout ── */
+  .skills-animated-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.5rem;
+  }
+
+  /* ── Panel shell (mirrors .card) ── */
+  .sa-panel {
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 0.75rem;
+    padding: 1.75rem;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .sa-panel:hover {
+    border-color: rgba(59,130,246,0.35);
+    box-shadow: 0 0 24px rgba(59,130,246,0.07);
+  }
+  .sa-radar-panel { display: flex; flex-direction: column; }
+
+  /* ── Panel header ── */
+  .sa-panel-header {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    color: #6b7280; margin-bottom: 1.75rem; text-transform: uppercase;
+  }
+  .sa-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    animation: sa-pulse 2s ease-in-out infinite;
+  }
+  @keyframes sa-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* ── Skill rows ── */
+  .sa-skill-row {
+    margin-bottom: 1.3rem; border-radius: 0.5rem;
+    padding: 0.4rem 0.5rem; cursor: default;
+    transition: background .2s;
+  }
+  .sa-skill-row:last-child { margin-bottom: 0; }
+  .sa-skill-row:hover { background: rgba(255,255,255,0.04); }
+
+  .sa-skill-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .35rem; }
+  .sa-skill-name { font-size: .875rem; color: #d1d5db; font-weight: 500; transition: color .2s; }
+  .sa-skill-pct  { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 2.8ch; text-align: right; }
+
+  .sa-bar-track { background: #374151; border-radius: 9999px; height: 7px; overflow: visible; position: relative; }
+  .sa-bar-fill  {
+    height: 100%; border-radius: 9999px; width: 0%;
+    transition: width 1.1s cubic-bezier(.4,0,.2,1);
+    position: relative;
+  }
+  .sa-bar-fill::after {
+    content: ''; position: absolute; right: -3px; top: 50%; transform: translateY(-50%);
+    width: 10px; height: 10px; border-radius: 50%;
+    background: inherit; filter: blur(4px); opacity: .9;
+  }
+
+  /* Highlighted state (triggered by radar hover) */
+  .sa-skill-row.sa-highlighted { background: rgba(255,255,255,0.06); }
+  .sa-skill-row.sa-highlighted .sa-skill-name { color: #fff; font-weight: 600; }
+  .sa-skill-row.sa-highlighted .sa-bar-fill { filter: drop-shadow(0 0 6px var(--bar-color)); }
+</style>
+
+<script define:vars={{ SKILLS }}>
+  // ── Tooltips: appended to body so position:fixed is never clipped
+  //    by the section's scroll-reveal transform
+  const skillTT = document.createElement('div');
+  skillTT.id = 'sa-skill-tt';
+  Object.assign(skillTT.style, {
+    position:'fixed', display:'none', zIndex:'9999',
+    background:'#0f172a', border:'1px solid rgba(255,255,255,0.12)',
+    borderRadius:'.6rem', padding:'.85rem 1rem', minWidth:'220px', maxWidth:'280px',
+    pointerEvents:'none', boxShadow:'0 8px 32px rgba(0,0,0,.5)',
+    fontFamily:'Inter,sans-serif', transition:'opacity .15s'
+  });
+  document.body.appendChild(skillTT);
+
+  const radarTT = document.createElement('div');
+  radarTT.id = 'sa-radar-tt';
+  Object.assign(radarTT.style, {
+    position:'fixed', display:'none', zIndex:'9999',
+    background:'#0f172a', border:'1px solid rgba(255,255,255,.15)',
+    borderRadius:'.4rem', padding:'.35rem .7rem', fontSize:'.8rem',
+    fontWeight:'700', pointerEvents:'none', boxShadow:'0 4px 16px rgba(0,0,0,.4)',
+    fontFamily:'Inter,sans-serif', whiteSpace:'nowrap'
+  });
+  document.body.appendChild(radarTT);
+
+  // ── Tooltip placement (edge-aware) ──
+  function place(el, mx, my) {
+    const m = 14, w = el.offsetWidth, h = el.offsetHeight;
+    let x = mx + m, y = my + m;
+    if (x + w > window.innerWidth  - 8) x = mx - w - m;
+    if (y + h > window.innerHeight - 8) y = my - h - m;
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+  }
+
+  // ── Counter animation ──
+  function countUp(elId, to, duration) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(to * ease) + '%';
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // ── Animate a single bar from zero ──
+  function reAnimateBar(i) {
+    const fill = document.getElementById('bar-' + i);
+    if (!fill) return;
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      fill.style.transition = 'width 1.1s cubic-bezier(.4,0,.2,1)';
+      fill.style.width = fill.dataset.pct + '%';
+      countUp('pct-' + i, SKILLS[i].pct, 1100);
+    }));
+  }
+
+  // ── Bar row hover → skill detail tooltip ──
+  document.querySelectorAll('.sa-skill-row').forEach((row) => {
+    const i = parseInt(row.dataset.index);
+    const s = SKILLS[i];
+    row.addEventListener('mouseenter', () => {
+      skillTT.style.borderColor = s.color + '55';
+      skillTT.innerHTML = `
+        <div style="font-size:.75rem;font-weight:700;letter-spacing:.08em;color:${s.color};
+                    margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:1px solid rgba(255,255,255,.08)">
+          ${s.name}
+        </div>
+        <ul style="list-style:none">
+          ${s.items.map(item => `
+            <li style="font-size:.78rem;color:#9ca3af;padding:.18rem 0;display:flex;align-items:center;gap:.4rem">
+              <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:${s.color};flex-shrink:0"></span>
+              ${item}
+            </li>`).join('')}
+        </ul>`;
+      skillTT.style.display = 'block';
+    });
+    row.addEventListener('mousemove', (e) => place(skillTT, e.clientX, e.clientY));
+    row.addEventListener('mouseleave', () => { skillTT.style.display = 'none'; });
+  });
+
+  // ── Initial bar animation (IntersectionObserver) ──
+  const barsPanel = document.getElementById('bars-panel');
+  if (barsPanel) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        SKILLS.forEach((s, i) => {
+          setTimeout(() => {
+            const fill = document.getElementById('bar-' + i);
+            if (fill) fill.style.width = s.pct + '%';
+            countUp('pct-' + i, s.pct, 1100);
+          }, i * 130);
+        });
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    io.observe(barsPanel);
+  }
+
+  // ── Radar chart ──
+  const svg = document.getElementById('radar-svg');
+  if (svg) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const CX = 150, CY = 148, R = 100, N = SKILLS.length;
+
+    const polar = (angle, r) => [CX + r * Math.sin(angle), CY - r * Math.cos(angle)];
+
+    // Defs
+    const defs = document.createElementNS(NS, 'defs');
+    defs.innerHTML = `
+      <filter id="sa-glow"><feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="sa-glow-strong"><feGaussianBlur stdDeviation="7" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+    svg.appendChild(defs);
+
+    // Grid rings
+    [.25,.5,.75,1].forEach(f => {
+      const pts = SKILLS.map((_,i) => polar(2*Math.PI*i/N, R*f).join(',')).join(' ');
+      const p = document.createElementNS(NS,'polygon');
+      p.setAttribute('points',pts); p.setAttribute('fill','none');
+      p.setAttribute('stroke', f===1?'#4b5563':'#374151');
+      p.setAttribute('stroke-width', f===1?'1.5':'1');
+      svg.appendChild(p);
+    });
+
+    // Spokes + labels
+    const shortNames = ['Service','Infra','Support','Security','Cloud','Dev'];
+    SKILLS.forEach((_,i) => {
+      const angle = 2*Math.PI*i/N;
+      const [x1,y1] = polar(angle, R);
+      const ln = document.createElementNS(NS,'line');
+      ln.setAttribute('x1',String(CX)); ln.setAttribute('y1',String(CY));
+      ln.setAttribute('x2',String(x1)); ln.setAttribute('y2',String(y1));
+      ln.setAttribute('stroke','#374151'); ln.setAttribute('stroke-width','1');
+      svg.appendChild(ln);
+
+      const [lx,ly] = polar(angle, R+20);
+      const txt = document.createElementNS(NS,'text');
+      txt.setAttribute('x',String(lx)); txt.setAttribute('y',String(ly));
+      txt.setAttribute('text-anchor','middle'); txt.setAttribute('dominant-baseline','middle');
+      txt.setAttribute('fill','#9ca3af'); txt.setAttribute('font-size','10');
+      txt.setAttribute('font-family','Inter,sans-serif'); txt.setAttribute('font-weight','500');
+      txt.setAttribute('id','radar-lbl-'+i);
+      txt.textContent = shortNames[i];
+      svg.appendChild(txt);
+    });
+
+    // Data polygon
+    const dataPoints = SKILLS.map((s,i) => polar(2*Math.PI*i/N, R*s.pct/100));
+    const fillPoly = document.createElementNS(NS,'polygon');
+    fillPoly.setAttribute('points', SKILLS.map(()=>`${CX},${CY}`).join(' '));
+    fillPoly.setAttribute('fill','rgba(59,130,246,0.15)');
+    fillPoly.setAttribute('stroke','#3b82f6'); fillPoly.setAttribute('stroke-width','2');
+    fillPoly.setAttribute('filter','url(#sa-glow)');
+    svg.appendChild(fillPoly);
+
+    // Vertex dots + hit areas
+    const dots = dataPoints.map(([tx,ty],i) => {
+      const c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx',String(CX)); c.setAttribute('cy',String(CY));
+      c.setAttribute('r','4'); c.setAttribute('fill',SKILLS[i].color);
+      c.setAttribute('stroke','#111827'); c.setAttribute('stroke-width','1.5');
+      c.setAttribute('id','radar-dot-'+i);
+      svg.appendChild(c);
+
+      // Invisible hit target (larger radius)
+      const hit = document.createElementNS(NS,'circle');
+      hit.setAttribute('cx',String(tx)); hit.setAttribute('cy',String(ty));
+      hit.setAttribute('r','18'); hit.setAttribute('fill','transparent');
+      hit.setAttribute('data-ri',String(i)); hit.style.cursor = 'pointer';
+      svg.appendChild(hit);
+
+      return { el: c, tx, ty };
+    });
+
+    // ── Radar vertex hover ──
+    svg.addEventListener('mouseover', (e) => {
+      const hit = e.target && e.target.closest ? e.target.closest('[data-ri]') : null;
+      if (!hit) return;
+      const i = parseInt(hit.dataset.ri ?? '0');
+      const s = SKILLS[i];
+
+      const lbl = document.getElementById('radar-lbl-'+i);
+      if (lbl) { lbl.setAttribute('fill',s.color); lbl.setAttribute('font-weight','700'); }
+      const dot = document.getElementById('radar-dot-'+i);
+      if (dot) { dot.setAttribute('r','7'); dot.setAttribute('filter','url(#sa-glow-strong)'); }
+
+      document.querySelectorAll('.sa-skill-row').forEach(r => r.classList.remove('sa-highlighted'));
+      document.getElementById('row-'+i)?.classList.add('sa-highlighted');
+
+      reAnimateBar(i);
+
+      radarTT.style.color = s.color;
+      radarTT.style.borderColor = s.color + '66';
+      radarTT.innerHTML = `<span style="font-size:1.1rem">${s.pct}%</span>
+        <span style="color:#6b7280;font-weight:400;font-size:.72rem;margin-left:6px">${s.items.length} skills</span>`;
+      radarTT.style.display = 'block';
+    });
+
+    svg.addEventListener('mouseout', (e) => {
+      const hit = e.target && e.target.closest ? e.target.closest('[data-ri]') : null;
+      if (!hit) return;
+      const i = parseInt(hit.dataset.ri ?? '0');
+      const lbl = document.getElementById('radar-lbl-'+i);
+      if (lbl) { lbl.setAttribute('fill','#9ca3af'); lbl.setAttribute('font-weight','500'); }
+      const dot = document.getElementById('radar-dot-'+i);
+      if (dot) { dot.setAttribute('r','4'); dot.removeAttribute('filter'); }
+      document.getElementById('row-'+i)?.classList.remove('sa-highlighted');
+      radarTT.style.display = 'none';
+    });
+
+    svg.addEventListener('mousemove', (e) => {
+      if (radarTT.style.display === 'block') place(radarTT, e.clientX, e.clientY);
+    });
+
+    // ── Animate radar on scroll-into-view ──
+    const radarIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        let frame = 0; const steps = 60;
+        const ease = (t) => 1 - Math.pow(1-t, 3);
+        const tick = setInterval(() => {
+          frame++;
+          const t = ease(Math.min(frame/steps, 1));
+          const pts = dataPoints.map(([tx,ty]) => [CX+(tx-CX)*t, CY+(ty-CY)*t]);
+          fillPoly.setAttribute('points', pts.map(([x,y])=>`${x},${y}`).join(' '));
+          dots.forEach((d,i) => { d.el.setAttribute('cx',String(pts[i][0])); d.el.setAttribute('cy',String(pts[i][1])); });
+          if (frame >= steps) clearInterval(tick);
+        }, 16);
+        radarIO.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    radarIO.observe(svg);
+  }
+</script>
