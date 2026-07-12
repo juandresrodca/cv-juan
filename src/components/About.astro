@@ -1,42 +1,87 @@
 <!-- About Section -->
     <section id="about" class="scroll-reveal py-20 bg-dark-800 bg-opacity-20 relative">
         <div class="container mx-auto px-6">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title">About <em>Me</em></h2>
+            <div class="title-rule"></div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        With <span class="text-primary-400 font-semibold">14+ years</span> of progressive experience in IT systems administration and technical support, I've supported over 3,000+ end-users across enterprise and government environments.
+                        With <span class="text-accent-400 font-semibold">14+ years</span> of progressive experience in IT systems administration and technical support, I've supported over 3,000+ end-users across enterprise and government environments.
                     </p>
 
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        Currently working at <span class="text-secondary-500 font-semibold">Intel  Ireland</span>, supporting in a large-scale VM server migration project from VMware to Microsoft Hyper-V.
+                        Currently working at <span class="text-secondary-400 font-semibold">Intel  Ireland</span>, supporting in a large-scale VM server migration project from VMware to Microsoft Hyper-V.
                     </p>
 
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        Now pursuing my passion for cybersecurity with <span class="text-primary-400 font-semibold">OSCP certification</span> in progress and hands-on experience with penetration testing through HackTheBox challenges.
+                        Now pursuing my passion for cybersecurity with <span class="text-accent-400 font-semibold">OSCP certification</span> in progress and hands-on experience with penetration testing through HackTheBox challenges.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <span class="bg-primary-600/20 text-primary-400 px-3 py-1 rounded-full text-sm">ITIL v3 Certified</span>
-                        <span class="bg-secondary-600/20 text-secondary-400 px-3 py-1 rounded-full text-sm">OSCP In Progress</span>
-                        <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">Dublin, Ireland</span>
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <span class="chip chip-hot">ITIL v3 Certified</span>
+                        <span class="chip chip-hot">OSCP In Progress</span>
+                        <span class="chip">Dublin, Ireland</span>
                     </div>
                 </div>
 
                 <div class="flex justify-center">
-                    <div class="relative">
-                        <div class="w-80 h-80 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full p-1">
-                            <img
-                                src="/cv-juan/juan-profile.jpg"
-                                alt="Juan Rodriguez"
-                                class="w-full h-full object-cover rounded-full"
-                            />
-                        </div>
-                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-primary-500 rounded-full animate-float opacity-20"></div>
-                        <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary-500 rounded-full animate-float opacity-30" style="animation-delay: 2s;"></div>
+                    <div class="portrait">
+                        <div class="portrait-ring" aria-hidden="true"></div>
+                        <img
+                            src="/cv-juan/juan-profile.jpg"
+                            alt="Juan Rodriguez"
+                            class="portrait-img"
+                        />
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+<style>
+    .chip {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.74rem;
+        padding: 6px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        color: #94a3b8;
+        background: rgba(148, 163, 184, 0.05);
+    }
+
+    .chip-hot {
+        border-color: rgba(34, 211, 238, 0.35);
+        color: #22d3ee;
+        background: rgba(34, 211, 238, 0.06);
+    }
+
+    .portrait {
+        position: relative;
+        width: 20rem;
+        height: 20rem;
+    }
+
+    /* Spinning conic gradient ring — replaces the static gradient border */
+    .portrait-ring {
+        position: absolute;
+        inset: -10px;
+        border-radius: 50%;
+        background: conic-gradient(from 180deg, #3b82f6, #22d3ee, transparent 60%, #3b82f6);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+        animation: ring-spin 14s linear infinite;
+    }
+
+    @keyframes ring-spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .portrait-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+</style>

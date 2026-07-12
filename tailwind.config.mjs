@@ -6,19 +6,33 @@ export default {
       colors: {
         primary: {
           50: '#eff6ff',
+          300: '#93c5fd',
+          400: '#60a5fa',
           500: '#3b82f6',
           600: '#2563eb',
           700: '#1d4ed8',
           900: '#1e3a8a',
         },
         secondary: {
+          400: '#34d399',
           500: '#10b981',
           600: '#059669',
         },
+        accent: {
+          400: '#22d3ee',
+        },
         dark: {
+          600: '#4b5563',
+          700: '#374151',
           800: '#1f2937',
-          900: '#111827',
+          850: '#16213a',
+          875: '#111a2e',
+          900: '#0b1120',
         }
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out',
