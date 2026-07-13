@@ -21,7 +21,7 @@ jobs:
           # Use a PAT with write access so the push triggers the deploy workflow.
           # If you only have GITHUB_TOKEN, commits from Actions don't re-trigger
           # other workflows on the same repo by default.
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          #token: #${{ secrets.PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
