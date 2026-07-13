@@ -8,12 +8,12 @@
 
                 <!-- Desktop Menu -->
                 <ul class="hidden md:flex space-x-8">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#home`} class="nav-link">Home</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#about`} class="nav-link">About</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#experience`} class="nav-link">Experience</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#projects`} class="nav-link">Projects</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#skills`} class="nav-link">Skills</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#contact`} class="nav-link">Contact</a></li>
                     <li><a href={`${import.meta.env.BASE_URL}blog/`} class="nav-link">Blog</a></li>
                 </ul>
 
@@ -26,12 +26,12 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-800">
                 <ul class="space-y-1 pt-3">
-                    <li><a href="#home" class="mobile-nav-link">Home</a></li>
-                    <li><a href="#about" class="mobile-nav-link">About</a></li>
-                    <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
-                    <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-                    <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
-                    <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#home`} class="mobile-nav-link">Home</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#about`} class="mobile-nav-link">About</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#experience`} class="mobile-nav-link">Experience</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#projects`} class="mobile-nav-link">Projects</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#skills`} class="mobile-nav-link">Skills</a></li>
+                    <li><a href={`${import.meta.env.BASE_URL}#contact`} class="mobile-nav-link">Contact</a></li>
                     <li><a href={`${import.meta.env.BASE_URL}blog/`} class="mobile-nav-link">Blog</a></li>
                 </ul>
             </div>
@@ -88,5 +88,4 @@
       }
     });
   }
-</script>
 </script>
