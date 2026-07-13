@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import BackgroundAnimation from '../../components/BackgroundAnimation.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -30,7 +31,8 @@ function formatDate(date: Date) {
   type="article"
 >
   <Header />
-  <main class="min-h-screen bg-dark-900 pt-24 pb-20">
+  <BackgroundAnimation />
+  <main class="min-h-screen pt-24 pb-20">
     <div class="container mx-auto px-6 max-w-3xl">
 
       <!-- Back link -->
