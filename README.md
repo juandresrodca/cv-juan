@@ -18,7 +18,6 @@ This repository contains the source code for my personal portfolio website, desi
 - **Interactive Components:** Engaging user experience with animations and interactive elements.
 - **Blog/Write-ups:** A dedicated section for cybersecurity write-ups and articles.
 - **Contact Form:** A contact section with links to email, LinkedIn, and a downloadable CV.
-- 
 
 ## Technologies Used
 
