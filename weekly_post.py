@@ -4,10 +4,8 @@ weekly_post.py — Auto-generate a weekly cybersecurity blog post.
 
 Fetches the latest news from RSS feeds, calls Gemini to draft a post in
 Juan's voice, writes the markdown file, and pushes to git.
+This is reviewed after gemini create the post 
 
-Usage:
-    python weekly_post.py          # generate, commit, push
-    python weekly_post.py --dry-run  # preview only, no git ops
 """
 
 import argparse
@@ -109,7 +107,7 @@ def fetch_feed_items(feed_info: dict, max_per_feed: int = 10) -> list[dict]:
                 "title": entry.get("title", "(no title)"),
                 "link": entry.get("link", ""),
                 "published": published,
-                "summary": summary[:400],  # truncate to keep prompt tight
+                "summary": summary[:400],  # truncate to keep prompt tight on the last run this fail so we decrease the truncate to 400
             }
         )
     return items
