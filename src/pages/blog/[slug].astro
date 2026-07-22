@@ -46,7 +46,7 @@ function formatDate(date: Date) {
       <!-- Hero image (optional) — Astrofy PostLayout pattern -->
       {post.data.heroImage && (
         <img
-          src={post.data.heroImage}
+          src={`${import.meta.env.BASE_URL}${post.data.heroImage}`}
           alt={post.data.title}
           class="w-full rounded-lg mb-8 border border-gray-800 object-cover max-h-80"
         />
