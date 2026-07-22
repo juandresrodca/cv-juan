@@ -4,6 +4,7 @@ date: 2026-06-29
 summary: "This week, we're diving into the future of crypto with post-quantum, persistent threats from state-sponsored APTs, supply chain vulnerabilities in open-source and browser extensions, and a critical SSH client flaw."
 tags: ["post-quantum-cryptography", "apt", "supply-chain", "steganography", "browser-extensions", "open-source", "libssh2", "credentials", "weekly"]
 draft: false
+heroImage: "images/blog/2026-06-29-weekly-cyber-news.svg"
 ---
 
 Welcome back to the weekly breakdown, folks. Another busy week in cybersecurity, and it feels like we're constantly fighting on multiple fronts – from future-proofing our crypto to dealing with current, very real state-sponsored threats and supply chain nightmares. Let's get into it.
