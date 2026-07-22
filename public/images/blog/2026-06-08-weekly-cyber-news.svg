@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none" role="img" aria-label="Weekly Rundown: Supply Chain Delays, Physical Intrusions, and Smart TV Proxies">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#glow)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.30">
+    <path d="M0 120 H1200 M0 240 H1200 M0 360 H1200"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
+  </g>
+
+  <g stroke="#f472b6" stroke-width="1.4" opacity="0.38" fill="none">
+    <path d="M905 250 L865 314"/><path d="M905 250 L967 285"/><path d="M905 250 L1065 240"/><path d="M905 250 L979 218"/><path d="M905 250 L791 300"/><path d="M905 250 L954 319"/><path d="M905 250 L968 295"/><path d="M791 300 L954 319"/><path d="M954 319 L1065 240"/><path d="M1065 240 L791 300"/>
+  </g>
+  <g>
+    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
+    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
+      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
+      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
+    </g>
+    <circle cx="865" cy="314" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="967" cy="285" r="6" fill="#f472b6"/><circle cx="1065" cy="240" r="6" fill="#f472b6"/><circle cx="979" cy="218" r="4" fill="#93c5fd" opacity="1.0"/><circle cx="791" cy="300" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="954" cy="319" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="968" cy="295" r="4" fill="#93c5fd" opacity="1.0"/>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#f472b6"/>
+    <text x="100" y="200" fill="#ffffff" font-size="34" font-weight="800"><tspan x="100" dy="0">Weekly Rundown: Supply Chain</tspan><tspan x="100" dy="42">Delays, Physical Intrusions, and</tspan><tspan x="100" dy="42">Smart TV Proxies</tspan></text>
+    <text x="100" y="328" fill="#94a3b8" font-size="19" font-weight="400">Cyber Espionage · Linux · Supply Chain</text>
+    <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 8 June 2026</text>
+  </g>
+</svg>

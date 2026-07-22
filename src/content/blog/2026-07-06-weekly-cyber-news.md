@@ -4,6 +4,7 @@ date: 2026-07-06
 summary: "This week, we're looking at advanced data exfiltration from air-gapped systems via video cables, a new Java-based cross-platform RAT (QuimaRAT), an Opera GX flaw for data theft, AI skill evasion, a US govt. entity's $1M extortion payment, and North Korean malicious packages."
 tags: ["data-exfiltration", "air-gap", "malware", "rat", "cross-platform", "browser-security", "ai-security", "ransomware", "extortion", "nation-state", "supply-chain", "weekly"]
 draft: false
+heroImage: "images/blog/2026-07-06-weekly-cyber-news.svg"
 ---
 
 Alright team, let's dive into some of the more interesting cybersecurity headlines from the past few days. This week's news covers everything from physical-layer exfiltration to sophisticated cross-platform malware and the ongoing challenges in securing AI environments.

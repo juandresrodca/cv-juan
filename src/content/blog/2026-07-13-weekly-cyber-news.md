@@ -4,6 +4,7 @@ date: 2026-07-13
 summary: "This week, we're diving into a smorgasbord of cybersecurity news, from a hilarious misconfiguration revealing phishing ops to critical zero-day exploits and supply chain attacks."
 tags: ["weekly", "misconfiguration", "phishing", "supply-chain", "zero-day", "vulnerability"]
 draft: false
+heroImage: "images/blog/2026-07-13-weekly-cyber-news.svg"
 ---
 
 Hola, team! Juan here, back for another weekly dive into the wild world of cybersecurity. It's Monday, July 13th, 2026, and as usual, the threat landscape isn't taking any holidays. We've got a mixed bag this week – a touch of attacker sloppiness, some nasty zero-days, and the ever-present supply chain nightmares. Let's dig in.

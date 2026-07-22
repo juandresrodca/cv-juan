@@ -4,6 +4,7 @@ date: 2026-05-29
 summary: "AI is now a first-class weapon: LLM agents automate post-exploitation, state actors wield it at scale, and shadow AI apps bleed credentials quietly."
 tags: ["weekly", "ai-security", "apt", "vulnerabilities", "ransomware"]
 draft: false
+heroImage: "images/blog/2026-05-29-weekly-cyber-news.svg"
 ---
 
 Another week where the threat landscape moved faster than most patch cycles. Three themes dominated my reading this week: AI-powered attack automation going mainstream, nation-state groups industrialising their tooling, and the quiet credential drain from unsanctioned AI apps inside corporate networks. Let me break each one down from a blue-team perspective.

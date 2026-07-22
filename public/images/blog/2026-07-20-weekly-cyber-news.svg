@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none" role="img" aria-label="AI Bots Gone Wild and Supply Chain Woes: A Sysadmin's Take on This Week's Cyber News">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#glow)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.30">
+    <path d="M0 120 H1200 M0 240 H1200 M0 360 H1200"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
+  </g>
+
+  <g stroke="#2dd4bf" stroke-width="1.4" opacity="0.38" fill="none">
+    <path d="M905 250 L792 198"/><path d="M905 250 L818 271"/><path d="M905 250 L944 305"/><path d="M905 250 L887 317"/><path d="M905 250 L784 235"/><path d="M905 250 L802 209"/><path d="M905 250 L821 169"/><path d="M792 198 L802 209"/><path d="M792 198 L821 169"/><path d="M821 169 L784 235"/>
+  </g>
+  <g>
+    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
+    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
+      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
+      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
+    </g>
+    <circle cx="792" cy="198" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="818" cy="271" r="6" fill="#2dd4bf"/><circle cx="944" cy="305" r="5" fill="#93c5fd" opacity="0.8"/><circle cx="887" cy="317" r="4" fill="#93c5fd" opacity="1.0"/><circle cx="784" cy="235" r="3.5" fill="#93c5fd" opacity="0.65"/><circle cx="802" cy="209" r="6" fill="#2dd4bf"/><circle cx="821" cy="169" r="3.5" fill="#93c5fd" opacity="0.65"/>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#2dd4bf"/>
+    <text x="100" y="200" fill="#ffffff" font-size="34" font-weight="800"><tspan x="100" dy="0">AI Bots Gone Wild and Supply</tspan><tspan x="100" dy="42">Chain Woes: A Sysadmin's Take on</tspan><tspan x="100" dy="42">This Week's Cyber News</tspan></text>
+    <text x="100" y="328" fill="#94a3b8" font-size="19" font-weight="400">Ai · Vulnerability · Supply Chain</text>
+    <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 20 July 2026</text>
+  </g>
+</svg>
