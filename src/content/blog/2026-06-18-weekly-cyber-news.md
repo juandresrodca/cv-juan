@@ -4,6 +4,7 @@ date: 2026-06-18
 summary: "This week, we're diving into the shady dealings of a botnet tied to a public firm, critical NGINX flaws, the looming threat of orphaned AI agents, the resurgence of INC Ransomware, and a new crypto-clipper campaign."
 tags: ["weekly", "botnet", "nginx", "rce", "ai-security", "ransomware", "supply-chain", "cryptocurrency", "malware"]
 draft: false
+heroImage: "images/blog/2026-06-18-weekly-cyber-news.svg"
 ---
 
 Alright, another week, another deep dive into the digital trenches. It's Juan here, and this week has been a mixed bag of the usual suspects and some emerging headaches that are definitely keeping us on our toes. Let's get into it.

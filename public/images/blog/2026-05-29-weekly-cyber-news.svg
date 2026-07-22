@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none" role="img" aria-label="The AI Escalation: LLM Agents, Shadow Apps, and APT Warfare">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#glow)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.30">
+    <path d="M0 120 H1200 M0 240 H1200 M0 360 H1200"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
+  </g>
+
+  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.38" fill="none">
+    <path d="M905 250 L890 330"/><path d="M905 250 L968 301"/><path d="M905 250 L844 206"/><path d="M905 250 L919 342"/><path d="M905 250 L789 280"/><path d="M905 250 L959 316"/><path d="M905 250 L1054 255"/><path d="M968 301 L844 206"/><path d="M844 206 L1054 255"/><path d="M919 342 L968 301"/>
+  </g>
+  <g>
+    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
+    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
+      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
+      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
+    </g>
+    <circle cx="890" cy="330" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="968" cy="301" r="5" fill="#93c5fd" opacity="0.65"/><circle cx="844" cy="206" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="919" cy="342" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="789" cy="280" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="959" cy="316" r="6" fill="#fbbf24"/><circle cx="1054" cy="255" r="6" fill="#fbbf24"/>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#fbbf24"/>
+    <text x="100" y="200" fill="#ffffff" font-size="46" font-weight="800"><tspan x="100" dy="0">The AI Escalation: LLM</tspan><tspan x="100" dy="54">Agents, Shadow Apps,</tspan><tspan x="100" dy="54">and APT Warfare</tspan></text>
+    <text x="100" y="352" fill="#94a3b8" font-size="19" font-weight="400">Ai Security · Apt · Vulnerabilities</text>
+    <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 29 May 2026</text>
+  </g>
+</svg>

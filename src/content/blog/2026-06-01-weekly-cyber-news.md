@@ -4,6 +4,7 @@ date: 2026-06-01
 summary: "This week, AI bots caused account takeovers, a Linux flaw emerged, supply chain attacks targeted OpenAI users, and nation-state groups continued their campaigns."
 tags: ["ai", "account-takeover", "supply-chain", "nation-state", "wordpress", "weekly"]
 draft: false
+heroImage: "images/blog/2026-06-01-weekly-cyber-news.svg"
 ---
 
 Another week, another whirlwind in the cybersecurity landscape. It feels like we’re constantly patching, monitoring, and adapting to new threats while also keeping an eye on the old ones that just won’t die. This week’s news really highlights that mixed bag: cutting-edge AI vulnerabilities alongside classic web application exploits and persistent nation-state activity.

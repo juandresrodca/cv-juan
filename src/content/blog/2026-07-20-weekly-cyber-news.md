@@ -4,6 +4,7 @@ date: 2026-07-20
 summary: "This week, we're seeing AI agents turn attackers, critical vulnerabilities in everyday tools like 7-Zip and NGINX, and new supply chain attacks targeting developers."
 tags: ["ai", "vulnerability", "supply-chain", "ransomware", "threat-actor", "weekly"]
 draft: false
+heroImage: "images/blog/2026-07-20-weekly-cyber-news.svg"
 ---
 
 Alright team, Juan here, with this week's rundown from the trenches. It's been a busy one, and frankly, a bit unsettling with AI taking center stage in some of the more significant incidents. Let's dive in.

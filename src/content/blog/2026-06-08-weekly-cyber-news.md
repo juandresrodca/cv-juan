@@ -4,6 +4,7 @@ date: 2026-06-08
 summary: "This week, we're looking at China-nexus espionage on Linux, UNC3753's blended vishing and physical intrusions, VS Code's extension update delay, ChatGPT's new Lockdown Mode, smart TVs turned into web-scraping proxies, and a SolarWinds Serv-U DoS flaw added to CISA's KEV catalog."
 tags: ["weekly", "cyber-espionage", "linux", "supply-chain", "vishing", "physical-security", "ai", "privacy", "vulnerability", "cisa"]
 draft: false
+heroImage: "images/blog/2026-06-08-weekly-cyber-news.svg"
 ---
 
 Alright team, let's dive into another week of cybersecurity updates. We've got a mixed bag today, from state-sponsored APTs hitting Linux to some rather creative, and concerning, methods of data exfiltration and proxy networks.

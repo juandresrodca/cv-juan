@@ -4,6 +4,7 @@ date: 2026-05-15
 summary: "This week: a critical Fortinet RCE that's already being weaponised in the wild, a new Scattered Spider campaign targeting SaaS identity providers, and CISA's advisory on ICS vulnerabilities in water treatment facilities."
 tags: ["weekly", "vulnerabilities", "ransomware", "ics", "identity"]
 draft: false
+heroImage: "images/blog/2026-05-15-weekly-cyber-news.svg"
 ---
 
 Another week, another set of patches to fast-track and conversations to have with leadership about why we can't defer that firewall upgrade until Q3.

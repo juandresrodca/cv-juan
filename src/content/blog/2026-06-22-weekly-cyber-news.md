@@ -4,6 +4,7 @@ date: 2026-06-22
 summary: "This week's cybersecurity news highlights how legacy infrastructure is enabling AI agent hijacking and botnets, while familiar threats like phishing, ransomware, and WordPress vulnerabilities continue to dominate."
 tags: ["weekly", "botnets", "legacy-systems", "ai-security", "phishing", "ransomware", "wordpress"]
 draft: false
+heroImage: "images/blog/2026-06-22-weekly-cyber-news.svg"
 ---
 
 Alright, another Monday, another dive into the latest in cybersecurity. It feels like every week we're talking about new threats, but often, they're just old threats in new clothes, or, in some cases, truly ancient clothes. Let's break down this week's headlines.
