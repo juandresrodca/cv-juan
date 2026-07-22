@@ -19,7 +19,7 @@ This repository contains the source code for my personal portfolio website, desi
 - **Blog/Write-ups:** A dedicated section for cybersecurity write-ups and articles.
 - **Contact Form:** A contact section with links to email, LinkedIn, and a downloadable CV.
 
-## Technologies Used
+## Technologies Used.
 
 This portfolio is built with a modern tech stack:
 
