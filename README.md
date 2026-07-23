@@ -13,7 +13,7 @@ This repository contains the source code for my personal portfolio website, desi
 
 ## Features
 
-- **Responsive Design:** Fully responsive layout that works on all devices, from mobile to desktop.
+- **Responsive Design:** Fully responsive layout that works on all devices, from mobile to desktop
 - **Project Showcase:** Detailed project pages with write-ups and links to live demos and source code.
 - **Interactive Components:** Engaging user experience with animations and interactive elements.
 - **Blog/Write-ups:** A dedicated section for cybersecurity write-ups and articles.
