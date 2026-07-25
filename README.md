@@ -30,28 +30,8 @@ This portfolio is built with a modern tech stack:
 - **[GitHub Pages](https://docs.github.com/en/pages):** Hosts the live version of the portfolio.
 - **[GitHub Actions](https://docs.github.com/en/actions):** Automates the build and deployment process.
 
-## Setup and Local Development
 
-To run this project locally, follow these steps:
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/juandresrodca/cv-juan.git
-    cd cv-juan
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    .
-    ```
-
-3.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-
-    The site will be accessible at `http://localhost:4321`.
 
 ## Deployment
 
