@@ -5,10 +5,10 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   site: 'https://juandresrodca.github.io',
-  base: '/cv-juan', // Confirm this matches your repo name
+  base: '/cv-juan', 
   output: 'static',
   build: {
     assets: '_astro'
   },
-  trailingSlash: 'always' // Add this line!
+  trailingSlash: 'always'
 });
