@@ -21,7 +21,7 @@ This repository contains the source code for my personal portfolio website, desi
 
 ## Technologies Used.
 
-This portfolio is built with a modern tech stack:
+   This portfolio is built with a modern tech stack:
 
 - **[Astro](https://docs.astro.build/):** The primary framework for building this fast, content-focused website.
 - **[React](https://react.dev/learn):** Used for creating interactive UI components within the Astro ecosystem.
