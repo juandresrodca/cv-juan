@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none" role="img" aria-label="AI, RATs, and Routers: A Week of Cyber Intrusion">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#glow)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.30">
+    <path d="M0 120 H1200 M0 240 H1200 M0 360 H1200"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
+  </g>
+
+  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.38" fill="none">
+    <path d="M905 250 L799 259"/><path d="M905 250 L971 320"/><path d="M905 250 L1026 191"/><path d="M905 250 L1047 284"/><path d="M905 250 L1034 269"/><path d="M905 250 L1019 295"/><path d="M905 250 L947 356"/><path d="M1019 295 L1034 269"/><path d="M1026 191 L799 259"/><path d="M1047 284 L947 356"/>
+  </g>
+  <g>
+    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
+    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
+      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
+      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
+    </g>
+    <circle cx="799" cy="259" r="5" fill="#93c5fd" opacity="1.0"/><circle cx="971" cy="320" r="6" fill="#fbbf24"/><circle cx="1026" cy="191" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="1047" cy="284" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="1034" cy="269" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="1019" cy="295" r="4" fill="#93c5fd" opacity="1.0"/><circle cx="947" cy="356" r="6" fill="#fbbf24"/>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#fbbf24"/>
+    <text x="100" y="200" fill="#ffffff" font-size="46" font-weight="800"><tspan x="100" dy="0">AI, RATs, and Routers:</tspan><tspan x="100" dy="54">A Week of Cyber</tspan><tspan x="100" dy="54">Intrusion</tspan></text>
+    <text x="100" y="352" fill="#94a3b8" font-size="19" font-weight="400">Ransomware · Supply Chain · Ai</text>
+    <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 31 August 2026</text>
+  </g>
+</svg>
