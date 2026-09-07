@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main # Este flujo de trabajo se ejecuta cuando haces push a la rama 'main'
+  workflow_run:
+    # The weekly post workflow commits with GITHUB_TOKEN, which does NOT
+    # re-trigger the push event above. This runs the deploy after it finishes
+    # so auto-generated blog posts actually reach the live site.
+    workflows: ["Weekly Cybersecurity Blog Post"]
+    types:
+      - completed
+    branches:
+      - main
   workflow_dispatch: # Permite la ejecución manual del workflow
 
 permissions:
@@ -14,6 +23,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # For workflow_run events, only build when the post run succeeded.
+    # Push and manual runs always build.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
