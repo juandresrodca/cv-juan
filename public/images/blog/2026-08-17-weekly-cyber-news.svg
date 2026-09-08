@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,17 +18,7 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L1014 249"/><path d="M905 250 L827 327"/><path d="M905 250 L967 178"/><path d="M905 250 L993 190"/><path d="M905 250 L793 258"/><path d="M905 250 L781 237"/><path d="M905 250 L1015 313"/><path d="M967 178 L993 190"/><path d="M827 327 L1014 249"/><path d="M827 327 L993 190"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="1014" cy="249" r="6" fill="#fbbf24"/><circle cx="827" cy="327" r="3.5" fill="#93c5fd" opacity="0.65"/><circle cx="967" cy="178" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="993" cy="190" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="793" cy="258" r="6" fill="#fbbf24"/><circle cx="781" cy="237" r="3.5" fill="#93c5fd" opacity="0.8"/><circle cx="1015" cy="313" r="5" fill="#93c5fd" opacity="0.8"/>
-  </g>
+  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.32" fill="none"><path d="M935 241 L768 178"/><path d="M935 241 L1065 327"/><path d="M935 241 L758 257"/><path d="M935 241 L845 270"/><path d="M845 270 L758 257"/><path d="M935 241 L885 305"/><path d="M935 241 L992 142"/><path d="M935 241 L868 348"/></g><circle cx="885" cy="305" r="4" fill="#93c5fd" opacity="0.75"/><circle cx="831" cy="364" r="4" fill="#93c5fd" opacity="0.55"/><circle cx="992" cy="142" r="5" fill="#93c5fd" opacity="0.9"/><circle cx="868" cy="348" r="5" fill="#93c5fd" opacity="0.75"/><circle cx="768" cy="178" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(753.2 163.4) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="1065" cy="327" r="26" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/><g transform="translate(1050.9 312.2) scale(1.213)" fill="none" stroke="#fbbf24" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g><circle cx="758" cy="257" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(743.1 242.9) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="845" cy="270" r="24" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(831.4 256.6) scale(1.120)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="935" cy="241" r="46" fill="#0b1220" stroke="#fbbf24" stroke-width="2.5"/><g transform="translate(910.9 218.4) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>

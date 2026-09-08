@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,17 +18,7 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#2dd4bf" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L770 208"/><path d="M905 250 L771 225"/><path d="M905 250 L982 168"/><path d="M905 250 L947 137"/><path d="M905 250 L811 154"/><path d="M905 250 L847 311"/><path d="M905 250 L814 281"/><path d="M771 225 L770 208"/><path d="M811 154 L771 225"/><path d="M982 168 L814 281"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="770" cy="208" r="5" fill="#93c5fd" opacity="1.0"/><circle cx="771" cy="225" r="3.5" fill="#93c5fd" opacity="0.65"/><circle cx="982" cy="168" r="4" fill="#93c5fd" opacity="1.0"/><circle cx="947" cy="137" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="811" cy="154" r="5" fill="#93c5fd" opacity="0.8"/><circle cx="847" cy="311" r="6" fill="#2dd4bf"/><circle cx="814" cy="281" r="6" fill="#2dd4bf"/>
-  </g>
+  <g stroke="#2dd4bf" stroke-width="1.4" opacity="0.32" fill="none"><path d="M918 253 L806 123"/><path d="M918 253 L1084 321"/><path d="M918 253 L906 347"/><path d="M918 253 L836 191"/><path d="M918 253 L899 121"/><path d="M918 253 L1016 378"/><path d="M836 191 L1084 321"/><path d="M918 253 L956 179"/><path d="M918 253 L749 238"/></g><circle cx="791" cy="159" r="4" fill="#93c5fd" opacity="0.75"/><circle cx="1009" cy="186" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="854" cy="354" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="956" cy="179" r="6" fill="#93c5fd" opacity="0.75"/><circle cx="749" cy="238" r="5" fill="#93c5fd" opacity="0.75"/><circle cx="793" cy="343" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="806" cy="123" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(792.9 109.5) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="1084" cy="321" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(1069.9 306.3) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="906" cy="347" r="24" fill="#0b1220" stroke="#fb7185" stroke-width="2"/><g transform="translate(892.9 333.7) scale(1.120)" fill="none" stroke="#fb7185" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.4" fill="#fb7185" stroke="none"/><path d="M12 3 V6 M12 18 V21 M3 12 H6 M18 12 H21"/></g><circle cx="836" cy="191" r="24" fill="#0b1220" stroke="#fb7185" stroke-width="2"/><g transform="translate(822.4 177.8) scale(1.120)" fill="none" stroke="#fb7185" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.4" fill="#fb7185" stroke="none"/><path d="M12 3 V6 M12 18 V21 M3 12 H6 M18 12 H21"/></g><circle cx="899" cy="121" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(884.4 106.2) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="1016" cy="378" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(1002.5 364.3) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="918" cy="253" r="46" fill="#0b1220" stroke="#2dd4bf" stroke-width="2.5"/><g transform="translate(893.6 229.6) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>

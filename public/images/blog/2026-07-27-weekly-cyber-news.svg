@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,21 +18,11 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#f472b6" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L861 140"/><path d="M905 250 L814 193"/><path d="M905 250 L872 187"/><path d="M905 250 L835 206"/><path d="M905 250 L1034 287"/><path d="M905 250 L836 195"/><path d="M905 250 L963 298"/><path d="M835 206 L836 195"/><path d="M835 206 L1034 287"/><path d="M836 195 L835 206"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="861" cy="140" r="5" fill="#93c5fd" opacity="1.0"/><circle cx="814" cy="193" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="872" cy="187" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="835" cy="206" r="3.5" fill="#93c5fd" opacity="0.65"/><circle cx="1034" cy="287" r="6" fill="#f472b6"/><circle cx="836" cy="195" r="6" fill="#f472b6"/><circle cx="963" cy="298" r="5" fill="#93c5fd" opacity="1.0"/>
-  </g>
+  <g stroke="#a78bfa" stroke-width="1.4" opacity="0.32" fill="none"><path d="M923 256 L841 197"/><path d="M923 256 L844 389"/><path d="M923 256 L904 342"/><path d="M923 256 L973 383"/><path d="M923 256 L1034 233"/><path d="M923 256 L970 182"/><path d="M970 182 L904 342"/><path d="M970 182 L841 197"/><path d="M923 256 L947 338"/><path d="M923 256 L752 244"/></g><circle cx="1006" cy="332" r="6" fill="#93c5fd" opacity="0.55"/><circle cx="947" cy="338" r="4" fill="#93c5fd" opacity="0.75"/><circle cx="752" cy="244" r="6" fill="#93c5fd" opacity="0.75"/><circle cx="1044" cy="304" r="5" fill="#93c5fd" opacity="0.55"/><circle cx="1078" cy="166" r="6" fill="#93c5fd" opacity="0.55"/><circle cx="841" cy="197" r="26" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/><g transform="translate(826.3 182.7) scale(1.213)" fill="none" stroke="#22d3ee" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.6 V12 a4.6 4.6 0 1 1 -4.6 4.6"/><path d="M14 4.6 h-3.2"/><path d="M9.4 16.6 l-2.1 -1.2"/></g><circle cx="844" cy="389" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(830.4 375.9) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="904" cy="342" r="28" fill="#0b1220" stroke="#f87171" stroke-width="2"/><g transform="translate(888.7 326.3) scale(1.307)" fill="none" stroke="#f87171" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 4 V7.2 M12 16.8 V20 M4 12 H7.2 M16.8 12 H20 M6.3 6.3 L8.6 8.6 M15.4 15.4 L17.7 17.7 M17.7 6.3 L15.4 8.6 M8.6 15.4 L6.3 17.7"/><circle cx="10.7" cy="11.2" r="0.85" fill="#f87171" stroke="none"/><circle cx="13.2" cy="13" r="0.85" fill="#f87171" stroke="none"/></g><circle cx="973" cy="383" r="24" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/><g transform="translate(959.4 369.8) scale(1.120)" fill="none" stroke="#fbbf24" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g><circle cx="1034" cy="233" r="28" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(1018.0 216.9) scale(1.307)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="970" cy="182" r="28" fill="#0b1220" stroke="#f87171" stroke-width="2"/><g transform="translate(954.2 166.3) scale(1.307)" fill="none" stroke="#f87171" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 4 V7.2 M12 16.8 V20 M4 12 H7.2 M16.8 12 H20 M6.3 6.3 L8.6 8.6 M15.4 15.4 L17.7 17.7 M17.7 6.3 L15.4 8.6 M8.6 15.4 L6.3 17.7"/><circle cx="10.7" cy="11.2" r="0.85" fill="#f87171" stroke="none"/><circle cx="13.2" cy="13" r="0.85" fill="#f87171" stroke="none"/></g><circle cx="923" cy="256" r="46" fill="#0b1220" stroke="#a78bfa" stroke-width="2.5"/><g transform="translate(899.2 233.3) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
-    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#f472b6"/>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#a78bfa"/>
     <text x="100" y="200" fill="#ffffff" font-size="34" font-weight="800"><tspan x="100" dy="0">The Week in Cyber: From Telegram</tspan><tspan x="100" dy="42">C2 to Exploding JSON and</tspan><tspan x="100" dy="42">Malvertising Madness</tspan></text>
     <text x="100" y="328" fill="#94a3b8" font-size="19" font-weight="400">Threat Intelligence · Supply Chain · Malware</text>
     <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 27 July 2026</text>

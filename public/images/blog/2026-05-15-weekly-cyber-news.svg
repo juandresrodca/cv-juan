@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,17 +18,7 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L892 171"/><path d="M905 250 L826 318"/><path d="M905 250 L806 240"/><path d="M905 250 L893 183"/><path d="M905 250 L894 334"/><path d="M905 250 L986 273"/><path d="M905 250 L998 337"/><path d="M892 171 L826 318"/><path d="M894 334 L826 318"/><path d="M892 171 L986 273"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="892" cy="171" r="4" fill="#93c5fd" opacity="0.8"/><circle cx="826" cy="318" r="5" fill="#93c5fd" opacity="0.65"/><circle cx="806" cy="240" r="3.5" fill="#93c5fd" opacity="0.65"/><circle cx="893" cy="183" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="894" cy="334" r="6" fill="#fbbf24"/><circle cx="986" cy="273" r="6" fill="#fbbf24"/><circle cx="998" cy="337" r="4" fill="#93c5fd" opacity="0.8"/>
-  </g>
+  <g stroke="#fbbf24" stroke-width="1.4" opacity="0.32" fill="none"><path d="M924 242 L846 127"/><path d="M924 242 L978 338"/><path d="M924 242 L990 175"/><path d="M924 242 L786 240"/><path d="M924 242 L797 330"/><path d="M846 127 L786 240"/><path d="M990 175 L846 127"/><path d="M924 242 L1046 322"/><path d="M924 242 L1060 334"/><path d="M924 242 L956 138"/></g><circle cx="1046" cy="322" r="5" fill="#93c5fd" opacity="0.9"/><circle cx="1081" cy="188" r="5" fill="#93c5fd" opacity="0.55"/><circle cx="1028" cy="236" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="1060" cy="334" r="4" fill="#93c5fd" opacity="0.9"/><circle cx="956" cy="138" r="5" fill="#93c5fd" opacity="0.55"/><circle cx="846" cy="127" r="24" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/><g transform="translate(832.4 113.9) scale(1.120)" fill="none" stroke="#fbbf24" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g><circle cx="978" cy="338" r="24" fill="#0b1220" stroke="#f472b6" stroke-width="2"/><g transform="translate(964.4 324.8) scale(1.120)" fill="none" stroke="#f472b6" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5 V7.5 a4 4 0 0 1 8 0 V10.5"/><circle cx="12" cy="15" r="1.4" fill="#f472b6" stroke="none"/></g><circle cx="990" cy="175" r="28" fill="#0b1220" stroke="#34d399" stroke-width="2"/><g transform="translate(974.0 159.8) scale(1.307)" fill="none" stroke="#34d399" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3"/><path d="M6.5 18.5 a5.5 5.5 0 0 1 11 0"/></g><circle cx="786" cy="240" r="28" fill="#0b1220" stroke="#f472b6" stroke-width="2"/><g transform="translate(770.5 224.6) scale(1.307)" fill="none" stroke="#f472b6" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5 V7.5 a4 4 0 0 1 8 0 V10.5"/><circle cx="12" cy="15" r="1.4" fill="#f472b6" stroke="none"/></g><circle cx="797" cy="330" r="26" fill="#0b1220" stroke="#34d399" stroke-width="2"/><g transform="translate(782.9 315.3) scale(1.213)" fill="none" stroke="#34d399" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3"/><path d="M6.5 18.5 a5.5 5.5 0 0 1 11 0"/></g><circle cx="924" cy="242" r="46" fill="#0b1220" stroke="#fbbf24" stroke-width="2.5"/><g transform="translate(900.3 218.9) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
