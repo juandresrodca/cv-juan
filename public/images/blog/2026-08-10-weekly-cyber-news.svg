@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,21 +18,11 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#f472b6" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L783 263"/><path d="M905 250 L1021 290"/><path d="M905 250 L974 310"/><path d="M905 250 L806 316"/><path d="M905 250 L909 352"/><path d="M905 250 L1003 163"/><path d="M905 250 L868 165"/><path d="M974 310 L909 352"/><path d="M806 316 L909 352"/><path d="M1003 163 L974 310"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="783" cy="263" r="6" fill="#f472b6"/><circle cx="1021" cy="290" r="6" fill="#f472b6"/><circle cx="974" cy="310" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="806" cy="316" r="5" fill="#93c5fd" opacity="0.65"/><circle cx="909" cy="352" r="5" fill="#93c5fd" opacity="0.65"/><circle cx="1003" cy="163" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="868" cy="165" r="5" fill="#93c5fd" opacity="1.0"/>
-  </g>
+  <g stroke="#2dd4bf" stroke-width="1.4" opacity="0.32" fill="none"><path d="M914 246 L858 316"/><path d="M914 246 L849 165"/><path d="M914 246 L770 277"/><path d="M858 316 L770 277"/><path d="M858 316 L770 277"/><path d="M770 277 L849 165"/><path d="M914 246 L1025 204"/><path d="M914 246 L1088 255"/><path d="M914 246 L949 148"/></g><circle cx="1025" cy="204" r="4" fill="#93c5fd" opacity="0.55"/><circle cx="1088" cy="255" r="6" fill="#93c5fd" opacity="0.75"/><circle cx="793" cy="177" r="4" fill="#93c5fd" opacity="0.55"/><circle cx="949" cy="148" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="768" cy="167" r="6" fill="#93c5fd" opacity="0.75"/><circle cx="858" cy="316" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(844.5 303.0) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="849" cy="165" r="28" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/><g transform="translate(833.4 149.6) scale(1.307)" fill="none" stroke="#fbbf24" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g><circle cx="770" cy="277" r="28" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(754.7 261.0) scale(1.307)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="914" cy="246" r="46" fill="#0b1220" stroke="#2dd4bf" stroke-width="2.5"/><g transform="translate(890.1 222.5) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
-    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#f472b6"/>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#2dd4bf"/>
     <text x="100" y="200" fill="#ffffff" font-size="46" font-weight="800"><tspan x="100" dy="0">Beyond the Code: AI's</tspan><tspan x="100" dy="54">Cyber Leap, VS Code</tspan><tspan x="100" dy="54">Threats, and Zero-Days</tspan></text>
     <text x="100" y="352" fill="#94a3b8" font-size="19" font-weight="400">Ai Security · Vs Code · Supply Chain</text>
     <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 10 August 2026</text>

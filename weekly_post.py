@@ -422,39 +422,176 @@ def _subtitle_from_tags(tags: list[str]) -> str:
     return " · ".join(t.replace("-", " ").title() for t in picked)
 
 
+# ── Topic-aware motif: a small library of on-brand line glyphs, one per cyber
+# news category. The dominant category becomes the hub; the rest of the week's
+# categories become satellites (duplicated to fill when the week is one-topic).
+# Everything is drawn in a 24×24 box centred on (12,12); {c} is the fill colour.
+_CATEGORY_GLYPHS = {
+    "ransomware": '<rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5 V7.5 a4 4 0 0 1 8 0 V10.5"/><circle cx="12" cy="15" r="1.4" fill="{c}" stroke="none"/>',
+    "data-breach": '<rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5 V7.2 a4 4 0 0 1 7.6 -1.4"/><circle cx="12" cy="15" r="1.4" fill="{c}" stroke="none"/>',
+    "zero-day": '<ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/>',
+    "phishing": '<path d="M14 4.6 V12 a4.6 4.6 0 1 1 -4.6 4.6"/><path d="M14 4.6 h-3.2"/><path d="M9.4 16.6 l-2.1 -1.2"/>',
+    "malware": '<circle cx="12" cy="12" r="4.2"/><path d="M12 4 V7.2 M12 16.8 V20 M4 12 H7.2 M16.8 12 H20 M6.3 6.3 L8.6 8.6 M15.4 15.4 L17.7 17.7 M17.7 6.3 L15.4 8.6 M8.6 15.4 L6.3 17.7"/><circle cx="10.7" cy="11.2" r="0.85" fill="{c}" stroke="none"/><circle cx="13.2" cy="13" r="0.85" fill="{c}" stroke="none"/>',
+    "identity": '<circle cx="12" cy="9" r="3"/><path d="M6.5 18.5 a5.5 5.5 0 0 1 11 0"/>',
+    "supply-chain": '<rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/>',
+    "ai-security": '<rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/>',
+    "cloud": '<path d="M7.6 17 h8.8 a3.2 3.2 0 0 0 0.3 -6.4 a4.6 4.6 0 0 0 -8.8 -1 a3.4 3.4 0 0 0 -0.3 7.4 Z"/>',
+    "apt": '<circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.4" fill="{c}" stroke="none"/><path d="M12 3 V6 M12 18 V21 M3 12 H6 M18 12 H21"/>',
+    "patch-tuesday": '<path d="M12 4 L18 6.5 V12 c0 4 -3 6.6 -6 7.8 c-3 -1.2 -6 -3.8 -6 -7.8 V6.5 Z"/><path d="M9.3 12 l2 2 l3.5 -3.7"/>',
+    "ddos": '<rect x="7.5" y="13.5" width="9" height="5" rx="1"/><circle cx="9.6" cy="16" r="0.7" fill="{c}" stroke="none"/><path d="M12 3.5 V10 M12 10 l-2.4 -2.4 M12 10 l2.4 -2.4"/><path d="M5.5 6 L9 9.3 M18.5 6 L15 9.3"/>',
+    "default": '<path d="M12 3.5 L18.5 6 V11.5 c0 4.4 -3.2 7.2 -6.5 8.5 c-3.3 -1.3 -6.5 -4.1 -6.5 -8.5 V6 Z"/>',
+}
+
+_CATEGORY_ACCENTS = {
+    "ransomware": "#f472b6", "data-breach": "#fb7185", "zero-day": "#fbbf24",
+    "phishing": "#22d3ee", "malware": "#f87171", "identity": "#34d399",
+    "supply-chain": "#a78bfa", "ai-security": "#2dd4bf", "cloud": "#38bdf8",
+    "apt": "#fb7185", "patch-tuesday": "#4ade80", "ddos": "#f59e0b",
+    "default": _ACCENT_DEFAULT,
+}
+
+# Ordered by priority: the first category whose keywords appear wins as dominant.
+# Keywords are matched as substrings against the lowercased tags and title.
+_CATEGORY_KEYWORDS = [
+    ("ransomware", ["ransomware", "ransom", "extortion"]),
+    ("phishing", ["phishing", "phish", "smishing", "vishing", "spoof", "social engineering", "social-engineering"]),
+    ("data-breach", ["breach", "leak", "exposed", "exfil", "stolen data", "data-breach", "records exposed"]),
+    ("zero-day", ["zero-day", "zero day", "zeroday", "0-day", "0day", "cve", "vulnerabilit", "exploit", "rce", "flaw"]),
+    ("malware", ["malware", "trojan", "loader", "botnet", "worm", "stealer", "infostealer", "rootkit", "spyware", "backdoor", "virus"]),
+    ("identity", ["identity", "credential", "mfa", "2fa", "authentication", "password", "sso", "oauth", "account takeover", "session hijack"]),
+    ("supply-chain", ["supply chain", "supply-chain", "npm", "pypi", "dependency", "sbom", "third-party", "third party", "poisoned package"]),
+    ("ai-security", ["ai-", "ai security", "llm", "genai", "machine learning", "deepfake", "prompt injection", "chatgpt", "artificial intelligence"]),
+    ("cloud", ["cloud", "aws", "azure", "gcp", "s3 bucket", "kubernetes", "misconfig", "iam"]),
+    ("apt", ["apt", "nation-state", "nation state", "state-sponsored", "espionage", "threat actor", "threat-actor"]),
+    ("ddos", ["ddos", "denial of service", "denial-of-service"]),
+    ("patch-tuesday", ["patch tuesday", "patch-tuesday", "patch", "hotfix", "security update"]),
+]
+
+# Short, ambiguous tags that need an exact (not substring) match.
+_CATEGORY_EXACT = {"ai": "ai-security", "dos": "ddos", "rat": "malware", "cve": "zero-day"}
+
+
+def _match_category(text: str) -> str | None:
+    text = text.strip().lower()
+    if text in _CATEGORY_EXACT:
+        return _CATEGORY_EXACT[text]
+    for cat, kws in _CATEGORY_KEYWORDS:
+        if any(kw in text for kw in kws):
+            return cat
+    return None
+
+
+def _detect_categories(tags: list[str], title: str) -> list[str]:
+    """Ordered, de-duplicated categories for a post — tags first (so the first
+    tag drives the dominant hub glyph), then title keywords for anything missed.
+    Falls back to ['default'] so there's always a motif."""
+    found: list[str] = []
+    for tag in tags:
+        cat = _match_category(tag)
+        if cat and cat not in found:
+            found.append(cat)
+    tl = title.lower()
+    for cat, kws in _CATEGORY_KEYWORDS:
+        if cat not in found and any(kw in tl for kw in kws):
+            found.append(cat)
+    return found or ["default"]
+
+
+def _glyph(name: str, cx: float, cy: float, size: float, color: str, sw: float = 1.8) -> str:
+    inner = _CATEGORY_GLYPHS.get(name, _CATEGORY_GLYPHS["default"]).format(c=color)
+    s = size / 24.0
+    return (f'<g transform="translate({cx - 12 * s:.1f} {cy - 12 * s:.1f}) scale({s:.3f})" '
+            f'fill="none" stroke="{color}" stroke-width="{sw:.2f}" '
+            f'stroke-linecap="round" stroke-linejoin="round">{inner}</g>')
+
+
+def _build_motif(cats: list[str], rng: random.Random) -> tuple[str, str]:
+    """Procedural, seeded constellation for the right side of the cover.
+
+    Returns (svg_markup, accent_colour). The dominant category is the hub; the
+    others are satellites, duplicated to fill a seed-varied number of nodes, so
+    every post gets a distinct shape while staying on-brand.
+    """
+    accent = _CATEGORY_ACCENTS.get(cats[0], _ACCENT_DEFAULT)
+    hub = (rng.uniform(895, 935), rng.uniform(232, 258))
+    hub_r = 46.0
+    placed: list[tuple[float, float, float]] = [(hub[0], hub[1], hub_r)]
+
+    def place(r: float, rmin: float = 92, rmax: float = 196) -> tuple[float, float] | None:
+        for _ in range(240):
+            ang = rng.uniform(0, 2 * math.pi)
+            rad = rng.uniform(rmin, rmax)
+            x = hub[0] + rad * math.cos(ang)
+            y = hub[1] + rad * math.sin(ang) * 0.82
+            if x < 738 or x > 1156 or y < 92 or y > 398:
+                continue
+            if any(math.hypot(x - px, y - py) < r + pr + 9 for px, py, pr in placed):
+                continue
+            placed.append((x, y, r))
+            return (x, y)
+        return None
+
+    n_sat = rng.randint(max(3, len(cats)), min(6, len(cats) + 3))
+    seq = cats[:]
+    rng.shuffle(seq)
+    while len(seq) < n_sat:                      # duplicate topics to fill
+        seq.append(rng.choice(cats))
+    seq = seq[:n_sat]
+
+    sats: list[tuple[float, float, str, float]] = []
+    for cat in seq:
+        r = rng.choice([24.0, 26.0, 28.0])
+        pos = place(r)
+        if pos:
+            sats.append((pos[0], pos[1], cat, r))
+
+    dots: list[tuple[float, float, float]] = []
+    for _ in range(rng.randint(3, 6)):
+        pos = place(rng.choice([4.0, 5.0, 6.0]))
+        if pos:
+            dots.append((pos[0], pos[1], placed[-1][2]))
+
+    edges = "".join(f'<path d="M{hub[0]:.0f} {hub[1]:.0f} L{x:.0f} {y:.0f}"/>'
+                    for x, y, _, _ in sats)
+    if len(sats) >= 2:
+        for _ in range(rng.randint(1, 3)):
+            a, b = rng.sample(sats, 2)
+            edges += f'<path d="M{a[0]:.0f} {a[1]:.0f} L{b[0]:.0f} {b[1]:.0f}"/>'
+    for x, y, _ in dots:
+        if rng.random() < 0.6:
+            edges += f'<path d="M{hub[0]:.0f} {hub[1]:.0f} L{x:.0f} {y:.0f}"/>'
+
+    dots_svg = "".join(
+        f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r:.0f}" fill="#93c5fd" '
+        f'opacity="{rng.choice([0.55, 0.75, 0.9])}"/>' for x, y, r in dots)
+    sats_svg = ""
+    for x, y, cat, r in sats:
+        col = _CATEGORY_ACCENTS.get(cat, "#93c5fd")
+        sats_svg += (f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r:.0f}" fill="#0b1220" '
+                     f'stroke="{col}" stroke-width="2"/>'
+                     + _glyph(cat, x, y, r * 1.12, col, sw=1.9))
+
+    hub_svg = (f'<circle cx="{hub[0]:.0f}" cy="{hub[1]:.0f}" r="{hub_r:.0f}" '
+               f'fill="#0b1220" stroke="{accent}" stroke-width="2.5"/>'
+               + _glyph(cats[0], hub[0], hub[1] + 1, 48, "#dbeafe", sw=1.7))
+
+    motif = (f'<g stroke="{accent}" stroke-width="1.4" opacity="0.32" fill="none">{edges}</g>'
+             f'{dots_svg}{sats_svg}{hub_svg}')
+    return motif, accent
+
+
 def build_cover_svg(title: str, date_str: str, tags: list[str], seed: str) -> str:
     """Build a themed, deterministic SVG hero cover for a weekly post."""
-    accent = _pick_accent(tags)
     lines, font, lh = _title_layout(title)
     subtitle = _subtitle_from_tags(tags)
     date_label = _format_date(date_str)
     rng = random.Random(seed)
 
-    # Constellation motif on the right — a hub with satellite nodes, echoing the
-    # site's background network animation.
-    hub = (905.0, 250.0)
-    sats: list[tuple[float, float]] = []
-    for _ in range(7):
-        ang = rng.uniform(0, 2 * math.pi)
-        rad = rng.uniform(78, 165)
-        x = max(745.0, min(1120.0, hub[0] + rad * math.cos(ang)))
-        y = max(108.0, min(378.0, hub[1] + rad * math.sin(ang) * 0.72))
-        sats.append((x, y))
-
-    edges = [f'<path d="M{hub[0]:.0f} {hub[1]:.0f} L{x:.0f} {y:.0f}"/>' for x, y in sats]
-    for a, b in (rng.sample(sats, 2) for _ in range(3)):
-        edges.append(f'<path d="M{a[0]:.0f} {a[1]:.0f} L{b[0]:.0f} {b[1]:.0f}"/>')
-
-    highlight = set(rng.sample(range(len(sats)), 2))
-    nodes = []
-    for i, (x, y) in enumerate(sats):
-        if i in highlight:
-            nodes.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="6" fill="{accent}"/>')
-        else:
-            nodes.append(
-                f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{rng.choice([3.5, 4, 5])}" '
-                f'fill="#93c5fd" opacity="{rng.choice([0.65, 0.8, 1.0])}"/>'
-            )
+    # Topic-aware, procedural motif on the right: a hub glyph for the week's
+    # dominant category plus satellite glyphs for the rest of the news group,
+    # arranged in a seed-varied constellation (see _build_motif).
+    categories = _detect_categories(tags, title)
+    motif_svg, accent = _build_motif(categories, rng)
 
     title_y0 = 200
     title_tspans = "".join(
@@ -470,8 +607,8 @@ def build_cover_svg(title: str, date_str: str, tags: list[str], seed: str) -> st
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="{accent}" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="{accent}" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -483,17 +620,7 @@ def build_cover_svg(title: str, date_str: str, tags: list[str], seed: str) -> st
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="{accent}" stroke-width="1.4" opacity="0.38" fill="none">
-    {"".join(edges)}
-  </g>
-  <g>
-    <circle cx="{hub[0]:.0f}" cy="{hub[1]:.0f}" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate({hub[0]:.0f} {hub[1] + 2:.0f})" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    {"".join(nodes)}
-  </g>
+  {motif_svg}
 
   <g font-family="{_FONT_FAMILY}">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>

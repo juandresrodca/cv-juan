@@ -5,8 +5,8 @@
       <stop offset="1" stop-color="#1f2937"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#2563eb" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -18,21 +18,11 @@
     <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
   </g>
 
-  <g stroke="#f472b6" stroke-width="1.4" opacity="0.38" fill="none">
-    <path d="M905 250 L793 273"/><path d="M905 250 L989 316"/><path d="M905 250 L793 226"/><path d="M905 250 L1035 263"/><path d="M905 250 L751 252"/><path d="M905 250 L824 187"/><path d="M905 250 L984 233"/><path d="M793 226 L824 187"/><path d="M1035 263 L751 252"/><path d="M1035 263 L824 187"/>
-  </g>
-  <g>
-    <circle cx="905" cy="250" r="30" fill="#0b1220" stroke="#2563eb" stroke-width="2.5"/>
-    <g transform="translate(905 252)" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round">
-      <rect x="-11" y="-1" width="22" height="16" rx="3" fill="#60a5fa" fill-opacity="0.15"/>
-      <path d="M-6 -1 V-8 a6 6 0 0 1 12 0 V-1"/>
-    </g>
-    <circle cx="793" cy="273" r="6" fill="#f472b6"/><circle cx="989" cy="316" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="793" cy="226" r="6" fill="#f472b6"/><circle cx="1035" cy="263" r="3.5" fill="#93c5fd" opacity="1.0"/><circle cx="751" cy="252" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="824" cy="187" r="4" fill="#93c5fd" opacity="0.65"/><circle cx="984" cy="233" r="3.5" fill="#93c5fd" opacity="0.8"/>
-  </g>
+  <g stroke="#38bdf8" stroke-width="1.4" opacity="0.32" fill="none"><path d="M913 244 L788 194"/><path d="M913 244 L1022 150"/><path d="M913 244 L834 387"/><path d="M913 244 L892 357"/><path d="M1022 150 L834 387"/><path d="M834 387 L788 194"/><path d="M892 357 L788 194"/><path d="M913 244 L887 145"/><path d="M913 244 L797 329"/></g><circle cx="1015" cy="282" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="887" cy="145" r="4" fill="#93c5fd" opacity="0.75"/><circle cx="783" cy="278" r="4" fill="#93c5fd" opacity="0.75"/><circle cx="1056" cy="251" r="4" fill="#93c5fd" opacity="0.9"/><circle cx="797" cy="329" r="4" fill="#93c5fd" opacity="0.55"/><circle cx="1008" cy="246" r="5" fill="#93c5fd" opacity="0.55"/><circle cx="788" cy="194" r="28" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/><g transform="translate(772.5 178.0) scale(1.307)" fill="none" stroke="#22d3ee" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.6 V12 a4.6 4.6 0 1 1 -4.6 4.6"/><path d="M14 4.6 h-3.2"/><path d="M9.4 16.6 l-2.1 -1.2"/></g><circle cx="1022" cy="150" r="24" fill="#0b1220" stroke="#38bdf8" stroke-width="2"/><g transform="translate(1008.4 136.5) scale(1.120)" fill="none" stroke="#38bdf8" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 17 h8.8 a3.2 3.2 0 0 0 0.3 -6.4 a4.6 4.6 0 0 0 -8.8 -1 a3.4 3.4 0 0 0 -0.3 7.4 Z"/></g><circle cx="834" cy="387" r="26" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/><g transform="translate(819.8 372.5) scale(1.213)" fill="none" stroke="#fbbf24" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13.4" rx="4.2" ry="5.2"/><path d="M12 8.2 V5.6"/><circle cx="12" cy="4.7" r="1.5"/><path d="M9.6 5.4 L7.6 4 M14.4 5.4 L16.4 4"/><path d="M7.9 11 L4.9 9.6 M7.6 14 L4.6 14 M7.9 17 L5 18.4"/><path d="M16.1 11 L19.1 9.6 M16.4 14 L19.4 14 M16.1 17 L19 18.4"/><path d="M8 13.2 H16"/></g><circle cx="892" cy="357" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(878.6 343.2) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="913" cy="244" r="46" fill="#0b1220" stroke="#38bdf8" stroke-width="2.5"/><g transform="translate(889.2 220.6) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 17 h8.8 a3.2 3.2 0 0 0 0.3 -6.4 a4.6 4.6 0 0 0 -8.8 -1 a3.4 3.4 0 0 0 -0.3 7.4 Z"/></g>
 
   <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
     <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
-    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#f472b6"/>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#38bdf8"/>
     <text x="100" y="200" fill="#ffffff" font-size="40" font-weight="800"><tspan x="100" dy="0">Adventures in</tspan><tspan x="100" dy="48">Misconfiguration, Supply</tspan><tspan x="100" dy="48">Chain, and Critical Flaws</tspan></text>
     <text x="100" y="340" fill="#94a3b8" font-size="19" font-weight="400">Misconfiguration · Phishing · Supply Chain</text>
     <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 13 July 2026</text>
