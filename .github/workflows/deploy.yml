@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # For workflow_run events, only build when the post run succeeded.
     # Push and manual runs always build.
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
@@ -37,11 +37,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clean install dependencies 📦
-        run: |
-          rm -rf node_modules package-lock.json
-          npm cache clean --force
-          npm install --legacy-peer-deps
+      - name: Install locked dependencies 📦
+        run: npm ci --legacy-peer-deps
 
       - name: Build Astro project 🏗️
         run: npm run build
@@ -64,7 +61,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages 🚀
