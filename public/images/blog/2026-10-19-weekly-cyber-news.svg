@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none" role="img" aria-label="Supply Chain Woes, AI Keys, and Broadcom's Unpatched Wi-Fi">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#glow)"/>
+
+  <g stroke="#334155" stroke-width="1" opacity="0.30">
+    <path d="M0 120 H1200 M0 240 H1200 M0 360 H1200"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480"/>
+  </g>
+
+  <g stroke="#a78bfa" stroke-width="1.4" opacity="0.32" fill="none"><path d="M910 239 L748 173"/><path d="M910 239 L847 140"/><path d="M910 239 L1065 183"/><path d="M910 239 L1054 286"/><path d="M910 239 L982 327"/><path d="M910 239 L987 92"/><path d="M982 327 L987 92"/><path d="M910 239 L983 176"/></g><circle cx="938" cy="343" r="6" fill="#93c5fd" opacity="0.75"/><circle cx="983" cy="176" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="913" cy="328" r="6" fill="#93c5fd" opacity="0.9"/><circle cx="858" cy="390" r="4" fill="#93c5fd" opacity="0.9"/><circle cx="748" cy="173" r="24" fill="#0b1220" stroke="#4ade80" stroke-width="2"/><g transform="translate(734.7 159.6) scale(1.120)" fill="none" stroke="#4ade80" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 L18 6.5 V12 c0 4 -3 6.6 -6 7.8 c-3 -1.2 -6 -3.8 -6 -7.8 V6.5 Z"/><path d="M9.3 12 l2 2 l3.5 -3.7"/></g><circle cx="847" cy="140" r="24" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/><g transform="translate(833.6 126.3) scale(1.120)" fill="none" stroke="#a78bfa" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g><circle cx="1065" cy="183" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(1050.6 168.3) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="1054" cy="286" r="28" fill="#0b1220" stroke="#f472b6" stroke-width="2"/><g transform="translate(1038.7 270.4) scale(1.307)" fill="none" stroke="#f472b6" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="2"/><path d="M8 10.5 V7.5 a4 4 0 0 1 8 0 V10.5"/><circle cx="12" cy="15" r="1.4" fill="#f472b6" stroke="none"/></g><circle cx="982" cy="327" r="26" fill="#0b1220" stroke="#2dd4bf" stroke-width="2"/><g transform="translate(967.8 312.1) scale(1.213)" fill="none" stroke="#2dd4bf" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx="0.6"/><path d="M9.5 7 V4 M12 7 V4 M14.5 7 V4 M9.5 17 V20 M12 17 V20 M14.5 17 V20 M7 9.5 H4 M7 12 H4 M7 14.5 H4 M17 9.5 H20 M17 12 H20 M17 14.5 H20"/></g><circle cx="987" cy="92" r="24" fill="#0b1220" stroke="#4ade80" stroke-width="2"/><g transform="translate(974.0 79.0) scale(1.120)" fill="none" stroke="#4ade80" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 L18 6.5 V12 c0 4 -3 6.6 -6 7.8 c-3 -1.2 -6 -3.8 -6 -7.8 V6.5 Z"/><path d="M9.3 12 l2 2 l3.5 -3.7"/></g><circle cx="910" cy="239" r="46" fill="#0b1220" stroke="#a78bfa" stroke-width="2.5"/><g transform="translate(885.9 215.9) scale(2.000)" fill="none" stroke="#dbeafe" stroke-width="1.70" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="9.4" width="9" height="5.6" rx="2.8"/><rect x="10.5" y="9.4" width="9" height="5.6" rx="2.8"/></g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="100" y="140" fill="#60a5fa" font-size="20" font-weight="600" letter-spacing="3">WEEKLY CYBER NEWS</text>
+    <rect x="100" y="154" width="54" height="3" rx="1.5" fill="#a78bfa"/>
+    <text x="100" y="200" fill="#ffffff" font-size="46" font-weight="800"><tspan x="100" dy="0">Supply Chain Woes, AI</tspan><tspan x="100" dy="54">Keys, and Broadcom's</tspan><tspan x="100" dy="54">Unpatched Wi-Fi</tspan></text>
+    <text x="100" y="352" fill="#94a3b8" font-size="19" font-weight="400">Supply Chain · Ai · Broadcom</text>
+    <text x="100" y="432" fill="#64748b" font-size="16" font-weight="500">Juan Rodriguez · 19 October 2026</text>
+  </g>
+</svg>
