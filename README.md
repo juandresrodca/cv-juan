@@ -19,7 +19,7 @@ This repository contains the source code for my personal portfolio website, desi
 - **[Astro](https://docs.astro.build/):** The primary framework for building this fast, content-focused website.
 - **[React](https://react.dev/learn):** Used for creating interactive UI components within the Astro ecosystem.
 - **[Tailwind CSS](https://tailwindcss.com/docs):** A utility-first CSS framework for rapid and responsive styling.
-- **[JavaScript (Vanilla JS)](https://developer.mozilla.org/en-US/docs/Web/JavaScript):** Powers dynamic interactions and animations.
+- **[JavaScript (Vanilla JS)](https://developer.mozilla.org/en-US/docs/Web/JavaScript):** Powers dynamic interactions and animations
 - **[GitHub Pages](https://docs.github.com/en/pages):** Hosts the live version of the portfolio.
 - **[GitHub Actions](https://docs.github.com/en/actions):** Automates the build and deployment process.
 
