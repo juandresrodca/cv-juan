@@ -186,7 +186,14 @@ def call_model(user_prompt: str) -> str:
             "GitHub Actions secret."
         )
 
-    client = genai.Client(api_key=api_key)
+    # Pin the API version to v1beta: the system/"developer" instruction below is
+    # not supported on v1, and newer google-genai releases default the Gemini
+    # Developer API to v1 — which broke this call with a 400 INVALID_ARGUMENT
+    # ("Developer instruction is not enabled for api version v1").
+    client = genai.Client(
+        api_key=api_key,
+        http_options=types.HttpOptions(api_version="v1beta"),
+    )
     response = client.models.generate_content(
         model=MODEL,
         contents=user_prompt,
